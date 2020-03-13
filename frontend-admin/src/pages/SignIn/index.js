@@ -2,14 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import { Form, Input } from "@rocketseat/unform";
+import { Input } from "@rocketseat/unform";
 import * as Yup from "yup";
 
 import { signInRequest } from "~/store/modules/auth/actions";
 
 import logo from "~/assets/logo.png";
 
-import SubmitButton from "~/components/SubmitButton";
+import FormContainer from "~/components/FormContainer";
+import SubmitButton from "~/components/Buttons/SubmitButton";
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -30,7 +31,7 @@ export default function SignIn() {
     <>
       <img src={logo} alt="Universidade Serafine" />
 
-      <Form schema={schema} onSubmit={handleSubmit}>
+      <FormContainer schema={schema} onSubmit={handleSubmit}>
         <div>
           <Input name="email" type="email" placeholder="E-mail" />
           <FaEnvelope size={14} />
@@ -43,7 +44,7 @@ export default function SignIn() {
         <Link to="/">Esqueci minha senha</Link>
 
         <SubmitButton loading={loading} text="Entrar" />
-      </Form>
+      </FormContainer>
     </>
   );
 }

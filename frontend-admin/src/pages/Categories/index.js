@@ -27,7 +27,18 @@ export default function Categories() {
     }
 
     loadCategories();
-  }, []);
+  }, [categories]);
+
+  async function handleDelete(id) {
+    try {
+      setLoading(true);
+      await api.delete(`category/${id}`);
+
+      toast.success(`Documento #${id} deletado com sucesso`);
+    } catch (err) {
+      toast.error("Ocorreu um erro ao tentar excluir a categoria");
+    }
+  }
 
   return (
     <>
@@ -69,7 +80,10 @@ export default function Categories() {
                   <Link to={`/category/edit/${category.id}`}>
                     <MdEdit size={20} color="#2727272" />
                   </Link>
-                  <button type="button">
+                  <button
+                    onClick={() => handleDelete(category.id)}
+                    type="button"
+                  >
                     <MdDelete size={20} color="#2727272" />
                   </button>
                 </td>

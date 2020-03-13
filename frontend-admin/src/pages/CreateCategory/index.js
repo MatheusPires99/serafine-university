@@ -13,7 +13,7 @@ import Table from "~/components/Table";
 import { InfoCreateHeader } from "~/components/Info";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
-import SubmitButton from "~/components/SubmitButton";
+import SubmitButton from "~/components/Buttons/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 import { DocumentsList, Scroll, DocumentsListInfo } from "./styles";
@@ -120,10 +120,12 @@ export default function CreateCategory({ match }) {
             <DocumentsList>
               <DocumentsListInfo>
                 <span>Lista de documentos vinculados a essa categoria:</span>
-                <small>
-                  Caso clique no ícone de lixeira o documento será excluido do
-                  sistema
-                </small>
+                {id ? (
+                  <small>
+                    Caso clique no ícone de lixeira o documento será excluido do
+                    sistema
+                  </small>
+                ) : null}
               </DocumentsListInfo>
               <Scroll>
                 {id ? (
@@ -150,7 +152,9 @@ export default function CreateCategory({ match }) {
                     </tbody>
                   </Table>
                 ) : (
-                  <h3>Nenhum documento vinculado</h3>
+                  <h3>
+                    Após cadastrar uma nova categoria vincule documentos a ela.
+                  </h3>
                 )}
               </Scroll>
             </DocumentsList>

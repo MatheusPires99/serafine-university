@@ -14,10 +14,11 @@ export const DocumentsListInfo = styled.div`
 
   span {
     font-size: 16px;
+    margin-bottom: 10px;
   }
 
   small {
-    margin: 10px 0;
+    margin-bottom: 10px;
     color: #bbb;
   }
 `;

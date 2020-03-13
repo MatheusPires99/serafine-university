@@ -18,6 +18,13 @@ export const Table = styled.table`
   tbody td {
     padding: 8px 12px;
 
+    &:nth-child(3) {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100px;
+    }
+
     &:last-child {
       display: flex;
       justify-content: flex-end;
