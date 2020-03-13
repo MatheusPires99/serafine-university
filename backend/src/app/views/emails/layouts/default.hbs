@@ -1,0 +1,67 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #f1f1f1;
+    max-width: 600px;
+    margin: 20px auto 0;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .container {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container, button, input {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 200px;
+  }
+
+  .icons img {
+    width: 25px;
+  }
+</style>
+
+<div class="container">
+  {{{ body }}}
+  {{> footer }}
+</div>
+<footer>
+  <div class="icons">
+    <a target="_blank" href="https://www.instagram.com/serafineoficial/?hl=pt-br">
+      <img src="cid:instagram" alt="Instagram">
+    </a>
+    <a target="_blank" href="https://www.facebook.com/serafineoficial/">
+      <img src="cid:facebook" alt="Facebook">
+    </a>
+    <a target="_blank" href="https://twitter.com/serafineoficial?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+      <img src="cid:twitter" alt="Twitter">
+    </a>
+  </div>
+</footer>

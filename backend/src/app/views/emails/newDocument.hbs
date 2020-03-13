@@ -1,0 +1,48 @@
+<style>
+  img {
+    margin: 20px auto;
+    width: 170px;
+  }
+
+  .new-document {
+    background: #ffc72c;
+    width: 100%;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .new-document span {
+    font-size: 28px
+  }
+
+  .user-name {
+    font-size: 28px;
+    margin: 40px 0 15px;
+  }
+
+  .document-container {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .link {
+    background: #ffc72c;
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 4px;
+  }
+</style>
+
+<img src="https://srfn.com.br/images/logo-p-500.jpeg" alt="Logo Serafine" />
+<div class="new-document">
+  <span>Novo documento disponível</span>
+</div>
+<strong class="user-name">Olá, {{ name }}</strong>
+<div class="document-container">
+  <p>Temos um novo documento no site sobre <strong>{{ documentName }}.</strong></p>
+  <p>{{ documentDescription }}</p>
+</div>
+<a class="link" href="{{ link }}">Visualizar documento</a>
