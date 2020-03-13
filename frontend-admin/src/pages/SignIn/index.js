@@ -9,7 +9,7 @@ import { signInRequest } from "~/store/modules/auth/actions";
 
 import logo from "~/assets/logo.png";
 
-import Spinner from "~/components/Spinner";
+import SubmitButton from "~/components/SubmitButton";
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -42,7 +42,7 @@ export default function SignIn() {
 
         <Link to="/">Esqueci minha senha</Link>
 
-        <button type="submit">{loading ? <Spinner /> : "Entrar"}</button>
+        <SubmitButton loading={loading} text="Entrar" />
       </Form>
     </>
   );

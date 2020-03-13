@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Form } from "@rocketseat/unform";
-import { darken } from "polished";
 
 export const FormContainer = styled(Form)`
   display: flex;
@@ -54,28 +53,6 @@ export const FormContainer = styled(Form)`
   textarea {
     height: 100%;
     padding: 15px;
-  }
-
-  button {
-    background: #ffc72c;
-    color: #fff;
-    font-weight: bold;
-    padding: 8px 12px;
-    border: 0;
-    border-radius: 4px;
-    transition: background 0.2s;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      background: ${darken(0.05, "#ffc72c")};
-    }
-
-    svg {
-      margin-right: 5px;
-    }
   }
 `;
 

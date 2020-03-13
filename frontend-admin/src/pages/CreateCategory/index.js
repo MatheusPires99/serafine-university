@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Input } from "@rocketseat/unform";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { MdDone, MdClear, MdDelete } from "react-icons/md";
+import { MdClear, MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
@@ -12,7 +12,8 @@ import history from "~/services/history";
 import Table from "~/components/Table";
 import { InfoCreateHeader } from "~/components/Info";
 import EditContainer from "~/components/EditContainer";
-import { FormContainer } from "~/components/FormContainer";
+import FormContainer from "~/components/FormContainer";
+import SubmitButton from "~/components/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 import { DocumentsList, Scroll, DocumentsListInfo } from "./styles";
@@ -25,12 +26,13 @@ const schema = Yup.object().shape({
 export default function CreateCategory({ match }) {
   const { id } = match.params;
 
-  const [categoryData, setCategoryData] = useState({
+  const [category, setCategory] = useState({
     name: null,
     description: null
   });
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -39,9 +41,9 @@ export default function CreateCategory({ match }) {
         try {
           setLoading(true);
           const responseCategory = await api.get(`/category/${id}`);
-          const responseDocument = await api.get("document");
+          const responseDocument = await api.get("/document");
 
-          setCategoryData(responseCategory.data);
+          setCategory(responseCategory.data);
           setDocuments(responseDocument.data);
 
           setLoading(false);
@@ -56,6 +58,7 @@ export default function CreateCategory({ match }) {
 
   async function handleSubmit({ name, description }) {
     try {
+      setButtonLoading(true);
       const data = { name, description };
 
       if (id) {
@@ -66,10 +69,12 @@ export default function CreateCategory({ match }) {
         await api.post("/category", data);
       }
 
+      setButtonLoading(false);
+
       toast.success("Categoria salva com sucesso");
       history.push("/category");
     } catch (err) {
-      toast.error("Não foi possível criar ou editar a categoria");
+      toast.error("Não foi possível salvar as alterações");
     }
   }
 
@@ -91,7 +96,7 @@ export default function CreateCategory({ match }) {
         ) : (
           <>
             <FormContainer
-              initialData={categoryData}
+              initialData={category}
               schema={schema}
               onSubmit={handleSubmit}
             >
@@ -109,10 +114,7 @@ export default function CreateCategory({ match }) {
                 rows="10"
               />
 
-              <button type="submit">
-                <MdDone size={24} color="#fff" />
-                SALVAR
-              </button>
+              <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
 
             <DocumentsList>

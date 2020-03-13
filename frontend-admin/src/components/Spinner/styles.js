@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
 
-export const SpinnerContainer = styled.p`
+export const SpinnerContainer = styled.i`
   width: 25px;
   height: 25px;
 
@@ -13,7 +13,7 @@ const skbounce = keyframes`
   50% { -webkit-transform: scale(1.0) }
 `;
 
-export const Bouce1 = styled.p`
+export const Bouce1 = styled.i`
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -28,7 +28,7 @@ export const Bouce1 = styled.p`
   `}
 `;
 
-export const Bouce2 = styled.p`
+export const Bouce2 = styled.i`
   width: 100%;
   height: 100%;
   border-radius: 50%;
