@@ -45,7 +45,7 @@ export default createGlobalStyle`
 
   .foo {
     border-radius: 4px;
-    padding: 8px 20px;
+    padding: 10px 20px;
     font-size: 16px;
   }
 `;

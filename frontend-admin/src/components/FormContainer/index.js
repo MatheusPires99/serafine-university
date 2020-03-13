@@ -23,7 +23,7 @@ export const FormContainer = styled(Form)`
   textarea {
     width: 100%;
     border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 2px solid #eee;
     padding: 0 15px;
     margin-bottom: 20px;
     transition: border-color 0.2s;
