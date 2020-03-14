@@ -4,7 +4,7 @@ import { Form } from "@rocketseat/unform";
 export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: ${props => (props.width ? "100%" : "800px")};
   margin-right: 45px;
 
   p {

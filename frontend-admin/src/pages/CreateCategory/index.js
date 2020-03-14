@@ -42,7 +42,7 @@ export default function CreateCategory({ match }) {
         try {
           setLoading(true);
           const responseCategory = await api.get(`/category/${id}`);
-          const responseDocument = await api.get("/document");
+          const responseDocument = await api.get(`/category-documents/${id}`);
 
           setVisible(true);
 
@@ -99,6 +99,7 @@ export default function CreateCategory({ match }) {
         ) : (
           <>
             <FormContainer
+              width={documents.length}
               initialData={category}
               schema={schema}
               onSubmit={handleSubmit}
@@ -123,15 +124,15 @@ export default function CreateCategory({ match }) {
             <DocumentsList visible={visible}>
               <DocumentsListHeader>
                 <span>Lista de documentos vinculados a essa categoria:</span>
-                {id ? (
+                {documents.length ? (
                   <small>
                     Caso clique no ícone de lixeira o documento será excluido do
                     sistema
                   </small>
                 ) : null}
               </DocumentsListHeader>
-              <Scroll>
-                {id ? (
+              <Scroll height={documents.length}>
+                {documents.length ? (
                   <TableContainer>
                     <thead>
                       <tr>
@@ -155,9 +156,7 @@ export default function CreateCategory({ match }) {
                     </tbody>
                   </TableContainer>
                 ) : (
-                  <h3>
-                    Após cadastrar uma nova categoria vincule documentos a ela.
-                  </h3>
+                  <h3>Nenhum documento vinculado a essa categoria.</h3>
                 )}
               </Scroll>
             </DocumentsList>

@@ -28,5 +28,5 @@ export const Scroll = styled(PerfectScrollbar)`
   border: 1px solid #ccc;
   padding: 10px 20px;
   border-radius: 4px;
-  max-height: 390px;
+  max-height: ${props => (props.height ? "390px" : "calc(390px + 30px);")};
 `;

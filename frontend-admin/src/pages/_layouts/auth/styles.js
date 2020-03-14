@@ -20,6 +20,7 @@ export const Content = styled.div`
 
   form {
     margin-top: 30px;
+    width: 100% !important;
 
     div {
       display: flex;
