@@ -9,14 +9,14 @@ import * as Yup from "yup";
 import api from "~/services/api";
 import history from "~/services/history";
 
-import Table from "~/components/Table";
+import TableContainer from "~/components/Table/TableContainer";
 import { InfoCreateHeader } from "~/components/Info";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
 import SubmitButton from "~/components/Buttons/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
-import { DocumentsList, Scroll, DocumentsListInfo } from "./styles";
+import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("O nome da categoria é obrigatório"),
@@ -32,6 +32,7 @@ export default function CreateCategory({ match }) {
   });
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
 
   useEffect(() => {
@@ -42,6 +43,8 @@ export default function CreateCategory({ match }) {
           setLoading(true);
           const responseCategory = await api.get(`/category/${id}`);
           const responseDocument = await api.get("/document");
+
+          setVisible(true);
 
           setCategory(responseCategory.data);
           setDocuments(responseDocument.data);
@@ -117,8 +120,8 @@ export default function CreateCategory({ match }) {
               <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
 
-            <DocumentsList>
-              <DocumentsListInfo>
+            <DocumentsList visible={visible}>
+              <DocumentsListHeader>
                 <span>Lista de documentos vinculados a essa categoria:</span>
                 {id ? (
                   <small>
@@ -126,10 +129,10 @@ export default function CreateCategory({ match }) {
                     sistema
                   </small>
                 ) : null}
-              </DocumentsListInfo>
+              </DocumentsListHeader>
               <Scroll>
                 {id ? (
-                  <Table>
+                  <TableContainer>
                     <thead>
                       <tr>
                         <th>ID</th>
@@ -150,7 +153,7 @@ export default function CreateCategory({ match }) {
                         </tr>
                       ))}
                     </tbody>
-                  </Table>
+                  </TableContainer>
                 ) : (
                   <h3>
                     Após cadastrar uma nova categoria vincule documentos a ela.

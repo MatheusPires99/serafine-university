@@ -6,9 +6,10 @@ export const DocumentsList = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  display: ${props => (props.visible ? "block" : "none")};
 `;
 
-export const DocumentsListInfo = styled.div`
+export const DocumentsListHeader = styled.header`
   display: flex;
   flex-direction: column;
 

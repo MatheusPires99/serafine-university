@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { MdAdd, MdSearch, MdEdit, MdDelete } from "react-icons/md";
+import { MdAdd, MdSearch } from "react-icons/md";
 import { toast } from "react-toastify";
 
 import api from "~/services/api";
 
-import Table from "~/components/Table";
-import TableLoading from "~/components/TableLoading";
+import TableContainer from "~/components/Table/TableContainer";
+import TableActions from "~/components/Table/TableActions";
+import TableLoading from "~/components/Table/TableLoading";
 import { InfoHeader } from "~/components/Info";
 
 import { UserCell } from "./styles";
@@ -51,7 +52,7 @@ export default function User() {
       {loading ? (
         <TableLoading />
       ) : (
-        <Table>
+        <TableContainer>
           <thead>
             <tr>
               <th>ID</th>
@@ -71,17 +72,12 @@ export default function User() {
                   {user.admin ? "Admin" : "Franqueado"}
                 </UserCell>
                 <td>
-                  <button type="button">
-                    <MdEdit size={20} color="#2727272" />
-                  </button>
-                  <button type="button">
-                    <MdDelete size={20} color="#2727272" />
-                  </button>
+                  <TableActions id={user.id} route="user" />
                 </td>
               </tr>
             ))}
           </tbody>
-        </Table>
+        </TableContainer>
       )}
     </>
   );

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { MdAdd, MdSearch, MdEdit, MdDelete } from "react-icons/md";
+import { MdAdd, MdSearch } from "react-icons/md";
 import { toast } from "react-toastify";
 
 import api from "~/services/api";
 
-import Table from "~/components/Table";
-import TableLoading from "~/components/TableLoading";
+import TableContainer from "~/components/Table/TableContainer";
+import TableActions from "~/components/Table/TableActions";
+import TableLoading from "~/components/Table/TableLoading";
 import { InfoHeader } from "~/components/Info";
 
 export default function Documents() {
@@ -49,7 +50,7 @@ export default function Documents() {
       {loading ? (
         <TableLoading />
       ) : (
-        <Table>
+        <TableContainer>
           <thead>
             <tr>
               <th>ID</th>
@@ -67,17 +68,12 @@ export default function Documents() {
                 <td>{document.description}</td>
                 <td>{document.category.name}</td>
                 <td>
-                  <button type="button">
-                    <MdEdit size={20} color="#2727272" />
-                  </button>
-                  <button type="button">
-                    <MdDelete size={20} color="#2727272" />
-                  </button>
+                  <TableActions id={document.id} route="document" />
                 </td>
               </tr>
             ))}
           </tbody>
-        </Table>
+        </TableContainer>
       )}
     </>
   );

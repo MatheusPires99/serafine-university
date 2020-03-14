@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { MdAdd, MdSearch, MdEdit, MdDelete } from "react-icons/md";
+import { MdAdd, MdSearch } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import api from "~/services/api";
 
-import Table from "~/components/Table";
-import TableLoading from "~/components/TableLoading";
+import TableContainer from "~/components/Table/TableContainer";
+import TableActions from "~/components/Table/TableActions";
+import TableLoading from "~/components/Table/TableLoading";
 import { InfoHeader } from "~/components/Info";
 
 export default function Categories() {
@@ -21,24 +22,13 @@ export default function Categories() {
         setCategories(response.data);
         setLoading(false);
       } catch (err) {
-        toast.error("Não foi possível carregar as informações das categorias");
         setLoading(false);
+        toast.error("Não foi possível carregar as informações das categorias");
       }
     }
 
     loadCategories();
   }, [categories]);
-
-  async function handleDelete(id) {
-    try {
-      setLoading(true);
-      await api.delete(`category/${id}`);
-
-      toast.success(`Documento #${id} deletado com sucesso`);
-    } catch (err) {
-      toast.error("Ocorreu um erro ao tentar excluir a categoria");
-    }
-  }
 
   return (
     <>
@@ -61,7 +51,7 @@ export default function Categories() {
       {loading ? (
         <TableLoading />
       ) : (
-        <Table>
+        <TableContainer>
           <thead>
             <tr>
               <th>ID</th>
@@ -77,20 +67,12 @@ export default function Categories() {
                 <td>{category.name}</td>
                 <td>{category.description}</td>
                 <td>
-                  <Link to={`/category/edit/${category.id}`}>
-                    <MdEdit size={20} color="#2727272" />
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(category.id)}
-                    type="button"
-                  >
-                    <MdDelete size={20} color="#2727272" />
-                  </button>
+                  <TableActions id={category.id} route="category" />
                 </td>
               </tr>
             ))}
           </tbody>
-        </Table>
+        </TableContainer>
       )}
     </>
   );
