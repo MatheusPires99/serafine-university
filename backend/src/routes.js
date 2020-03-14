@@ -6,6 +6,7 @@ import CategoryController from "./app/controllers/CategoryController";
 import DocumentController from "./app/controllers/DocumentController";
 import DocumentationController from "./app/controllers/DocumentationController";
 import DisableDocumentController from "./app/controllers/DisableDocumentController";
+import DocumentsInCategoryController from "./app/controllers/DocumentsInCategoryController";
 
 import authMiddlware from "./app/middlewares/auth";
 import authAdminMiddleware from "./app/middlewares/adminAuth";
@@ -46,5 +47,7 @@ routes.delete(
   "/category/:id/disable-document/:document_id",
   DisableDocumentController.delete
 );
+
+routes.get("/category-documents/:id", DocumentsInCategoryController.index);
 
 export default routes;
