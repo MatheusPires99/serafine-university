@@ -99,7 +99,6 @@ export default function CreateCategory({ match }) {
         ) : (
           <>
             <FormContainer
-              width={documents.length}
               initialData={category}
               schema={schema}
               onSubmit={handleSubmit}
