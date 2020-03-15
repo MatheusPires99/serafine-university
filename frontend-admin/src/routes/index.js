@@ -11,7 +11,7 @@ import CreateCategory from "../pages/Categories/Form";
 
 import Users from "../pages/Users/List";
 
-import Error404 from "../pages/Error404";
+import Error404 from "../pages/404Error";
 
 export default function Routes() {
   return (
