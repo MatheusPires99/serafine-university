@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Input } from "@rocketseat/unform";
 import PropTypes from "prop-types";
-import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
@@ -9,6 +8,7 @@ import api from "~/services/api";
 import history from "~/services/history";
 
 import TableContainer from "~/components/Table/TableContainer";
+import TableActions from "~/components/Table/TableActions";
 import HeaderCreate from "~/components/Dashboard/HeaderCreate";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
@@ -22,7 +22,7 @@ const schema = Yup.object().shape({
   description: Yup.string().required("A descrição da categoria é obrigatória")
 });
 
-export default function CreateCategory({ match }) {
+export default function FormCategory({ match }) {
   const { id } = match.params;
 
   const [category, setCategory] = useState({
@@ -136,11 +136,7 @@ export default function CreateCategory({ match }) {
                         <tr key={document.id}>
                           <td>#{document.id}</td>
                           <td>{document.name}</td>
-                          <td>
-                            <button type="button">
-                              <MdDelete size={20} color="#2727272" />
-                            </button>
-                          </td>
+                          <TableActions id={document.id} route="document" />
                         </tr>
                       ))}
                     </tbody>
@@ -157,7 +153,7 @@ export default function CreateCategory({ match }) {
   );
 }
 
-CreateCategory.propTypes = {
+FormCategory.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.node

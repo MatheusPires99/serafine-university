@@ -1,6 +1,8 @@
 import styled, { css, keyframes } from "styled-components";
 import { darken } from "polished";
 
+export const Container = styled.td``;
+
 export const ActionButtons = styled.div`
   display: flex;
 

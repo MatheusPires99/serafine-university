@@ -4,11 +4,12 @@ import Route from "./Route";
 
 import SignIn from "../pages/SignIn";
 
-import Documents from "../pages/Documents";
-import Categories from "../pages/Categories";
-import Users from "../pages/Users";
+import Documents from "../pages/Documents/List";
 
-import CreateCategory from "../pages/CreateCategory";
+import Categories from "../pages/Categories/List";
+import CreateCategory from "../pages/Categories/Form";
+
+import Users from "../pages/Users/List";
 
 import Error404 from "../pages/Error404";
 

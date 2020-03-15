@@ -21,6 +21,7 @@ export const DocumentsListHeader = styled.header`
   small {
     margin-bottom: 10px;
     color: #bbb;
+    font-size: 12px;
   }
 `;
 

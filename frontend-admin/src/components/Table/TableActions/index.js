@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 import api from "~/services/api";
 
-import { DeleteButton, ActionButtons } from "./styles";
+import { Container, DeleteButton, ActionButtons } from "./styles";
 
 export default function TableActions({ id, route }) {
   const [visible, setVisible] = useState(false);
@@ -26,7 +26,7 @@ export default function TableActions({ id, route }) {
   }
 
   return (
-    <>
+    <Container>
       {visible ? (
         <DeleteButton>
           <button onClick={() => handleDelete(id)} type="button">
@@ -46,7 +46,7 @@ export default function TableActions({ id, route }) {
           </button>
         </ActionButtons>
       )}
-    </>
+    </Container>
   );
 }
 
