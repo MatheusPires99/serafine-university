@@ -4,12 +4,9 @@ import Route from "./Route";
 
 import SignIn from "../pages/SignIn";
 
-import Documents from "../pages/Documents/List";
-
-import Categories from "../pages/Categories/List";
-import CreateCategory from "../pages/Categories/Form";
-
-import Users from "../pages/Users/List";
+import { DocumentList } from "../pages/Document";
+import { CategoryList, CategoryForm } from "../pages/Category";
+import { UserList } from "../pages/User";
 
 import Error404 from "../pages/404Error";
 
@@ -18,13 +15,13 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={SignIn} />
 
-      <Route path="/documents" component={Documents} isPrivate />
+      <Route path="/documents" component={DocumentList} isPrivate />
 
-      <Route path="/categories" component={Categories} isPrivate />
-      <Route path="/category/new" component={CreateCategory} isPrivate />
-      <Route path="/category/edit/:id" component={CreateCategory} isPrivate />
+      <Route path="/categories" component={CategoryList} isPrivate />
+      <Route path="/category/new" component={CategoryForm} isPrivate />
+      <Route path="/category/edit/:id" component={CategoryForm} isPrivate />
 
-      <Route path="/users" component={Users} isPrivate />
+      <Route path="/users" component={UserList} isPrivate />
 
       <Route path="/" component={Error404} />
     </Switch>

@@ -10,7 +10,7 @@ import Header from "~/components/Dashboard/Header";
 
 import { UserCell } from "./styles";
 
-export default function User() {
+export default function UserList() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 

@@ -8,7 +8,7 @@ import TableActions from "~/components/Table/TableActions";
 import TableLoading from "~/components/Table/TableLoading";
 import Header from "~/components/Dashboard/Header";
 
-export default function Categories() {
+export default function CategoryList() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
