@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input } from "@rocketseat/unform";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { MdClear, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
@@ -10,7 +9,7 @@ import api from "~/services/api";
 import history from "~/services/history";
 
 import TableContainer from "~/components/Table/TableContainer";
-import { InfoCreateHeader } from "~/components/Info";
+import HeaderCreate from "~/components/Dashboard/HeaderCreate";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
 import SubmitButton from "~/components/Buttons/SubmitButton";
@@ -83,15 +82,7 @@ export default function CreateCategory({ match }) {
 
   return (
     <>
-      <InfoCreateHeader>
-        <h1>{id ? "Editar categoria" : "Cadastrar categoria"}</h1>
-        <div>
-          <Link to="/categories">
-            <MdClear size={24} color="fff" />
-            CANCELAR
-          </Link>
-        </div>
-      </InfoCreateHeader>
+      <HeaderCreate id={id} lowercaseTitle="categoria" route="categories" />
 
       <EditContainer>
         {loading ? (

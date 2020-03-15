@@ -29,15 +29,12 @@ export default function TableActions({ id, route }) {
     <>
       {visible ? (
         <DeleteButton>
-          <span>Tem certeza que deseja deletar?</span>
-          <div>
-            <button onClick={() => handleDelete(id)} type="button">
-              Deletar
-            </button>
-            <button onClick={handleToggleVisible} type="button">
-              Cancelar
-            </button>
-          </div>
+          <button onClick={() => handleDelete(id)} type="button">
+            Deletar
+          </button>
+          <button onClick={handleToggleVisible} type="button">
+            Cancelar
+          </button>
         </DeleteButton>
       ) : (
         <ActionButtons>

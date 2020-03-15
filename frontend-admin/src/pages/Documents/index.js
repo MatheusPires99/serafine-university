@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { MdAdd, MdSearch } from "react-icons/md";
 import { toast } from "react-toastify";
 
 import api from "~/services/api";
@@ -7,7 +6,7 @@ import api from "~/services/api";
 import TableContainer from "~/components/Table/TableContainer";
 import TableActions from "~/components/Table/TableActions";
 import TableLoading from "~/components/Table/TableLoading";
-import { InfoHeader } from "~/components/Info";
+import Header from "~/components/Dashboard/Header";
 
 export default function Documents() {
   const [documents, setDocuments] = useState([]);
@@ -31,21 +30,7 @@ export default function Documents() {
 
   return (
     <>
-      <InfoHeader>
-        <h1>Documentos</h1>
-        <div>
-          <form action="">
-            <input type="text" placeholder="Digite sua busca..." />
-            <button type="submit">
-              <MdSearch color="#fff" size={24} />
-            </button>
-          </form>
-          <button type="button">
-            <MdAdd color="#fff" size={24} />
-            NOVO
-          </button>
-        </div>
-      </InfoHeader>
+      <Header title="Documentos" route="document" />
 
       {loading ? (
         <TableLoading />
