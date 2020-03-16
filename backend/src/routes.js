@@ -17,7 +17,7 @@ routes.post("/sessions", SessionController.store);
 
 routes.use(authMiddlware);
 
-routes.put("/users/:id", UserController.update);
+routes.put("/user/:id", UserController.update);
 
 routes.get("/category", CategoryController.index);
 routes.get("/category/:id", CategoryController.show);
@@ -27,10 +27,10 @@ routes.get("/document/:id", DocumentController.show);
 
 routes.use(authAdminMiddleware);
 
-routes.get("/users", UserController.index);
-routes.get("/users/:id", UserController.show);
-routes.post("/users", UserController.store);
-routes.delete("/users/:id", UserController.delete);
+routes.get("/user", UserController.index);
+routes.get("/user/:id", UserController.show);
+routes.post("/user", UserController.store);
+routes.delete("/user/:id", UserController.delete);
 
 routes.post("/category", CategoryController.store);
 routes.put("/category/:id", CategoryController.update);
