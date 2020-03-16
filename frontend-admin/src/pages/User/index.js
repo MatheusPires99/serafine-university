@@ -1,4 +1,4 @@
 import UserList from "./List";
-// import CategoryForm from "./Form";
+import UserForm from "./Form";
 
-export { UserList };
+export { UserList, UserForm };

@@ -21,7 +21,7 @@ const schema = Yup.object().shape({
   description: Yup.string().required("A descrição da categoria é obrigatória")
 });
 
-export default function FormCategory({ match }) {
+export default function CategoryForm({ match }) {
   const { id } = match.params;
 
   const [category, setCategory] = useState({
@@ -73,7 +73,7 @@ export default function FormCategory({ match }) {
       setButtonLoading(false);
 
       toast.success("Categoria salva com sucesso");
-      history.push("/category");
+      history.push("/categories");
     } catch (err) {
       toast.error("Não foi possível salvar as alterações");
     }
@@ -152,7 +152,7 @@ export default function FormCategory({ match }) {
   );
 }
 
-FormCategory.propTypes = {
+CategoryForm.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.node

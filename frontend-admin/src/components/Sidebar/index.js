@@ -37,7 +37,7 @@ export default function Sidebar() {
             <MdGroup size={20} />
             <strong>USUÁRIOS</strong>
           </Link>
-          <Link to="/">
+          <Link to="/user/new">
             <MdPersonAdd size={20} />
             <strong>CRIAR USUÁRIO</strong>
           </Link>

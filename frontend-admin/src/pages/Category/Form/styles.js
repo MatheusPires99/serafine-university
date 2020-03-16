@@ -15,10 +15,11 @@ export const DocumentsListHeader = styled.header`
 
   span {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   small {
+    margin-top: -10px;
     margin-bottom: 10px;
     color: #bbb;
     font-size: 12px;

@@ -15,7 +15,7 @@ export default function UserList() {
   useEffect(() => {
     async function loadCategories() {
       try {
-        const response = await api.get("users");
+        const response = await api.get("user");
 
         setUsers(response.data);
         setLoading(false);
@@ -26,7 +26,7 @@ export default function UserList() {
     }
 
     loadCategories();
-  }, []);
+  }, [users]);
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function UserList() {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <UserCell isAdmin={user.admin}>
-                  {user.admin ? "Admin" : "Franqueado"}
+                  {user.admin ? "Administrador" : "Franqueado"}
                 </UserCell>
                 <td>
                   <TableActions id={user.id} route="user" />
