@@ -3,9 +3,7 @@ import { toast } from "react-toastify";
 
 import api from "~/services/api";
 
-import TableContainer from "~/components/Table/TableContainer";
-import TableActions from "~/components/Table/TableActions";
-import TableLoading from "~/components/Table/TableLoading";
+import { TableContainer, TableActions, TableLoading } from "~/components/Table";
 import Header from "~/components/Dashboard/Header";
 
 export default function CategoryList() {

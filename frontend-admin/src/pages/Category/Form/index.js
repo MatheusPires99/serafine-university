@@ -7,8 +7,7 @@ import * as Yup from "yup";
 import api from "~/services/api";
 import history from "~/services/history";
 
-import TableContainer from "~/components/Table/TableContainer";
-import TableActions from "~/components/Table/TableActions";
+import { TableContainer, TableActions } from "~/components/Table";
 import HeaderCreate from "~/components/Dashboard/HeaderCreate";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
