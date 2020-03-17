@@ -138,7 +138,6 @@ export default function UserForm({ match }) {
               initialData={users}
               schema={id ? schemaEdit : schemaNew}
               onSubmit={handleSubmit}
-              width
             >
               <p>Complete todos os campos a baixo:</p>
 
