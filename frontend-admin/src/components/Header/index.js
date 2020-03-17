@@ -6,6 +6,7 @@ import { signOut } from "~/store/modules/auth/actions";
 import api from "~/services/api";
 
 import logo from "~/assets/white-feather.png";
+import avatar from "~/assets/avatar.jpg";
 
 import {
   Container,
@@ -72,10 +73,7 @@ export default function Header() {
               SAIR
             </button>
           </div>
-          <img
-            src="https://api.adorable.io/avatars/50/abott@adorable.png"
-            alt="Imagem de perfil"
-          />
+          <img src={avatar} alt="Serafine" />
         </Profile>
       </Content>
     </Container>

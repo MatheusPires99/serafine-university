@@ -82,6 +82,7 @@ export default function DocumentForm({ match }) {
       toast.success("Documento salva com sucesso");
       history.push("/documents");
     } catch (err) {
+      setButtonLoading(false);
       toast.error("Não foi possível salvar as alterações");
     }
   }
@@ -120,7 +121,11 @@ export default function DocumentForm({ match }) {
               <label htmlFor="category_id">
                 Selecione qual categoria esse documento pertencerá
               </label>
-              <AsyncSelect loadOptions={categoryOptions} />
+              <AsyncSelect
+                name="category_id"
+                loadOptions={categoryOptions.name}
+                required
+              />
 
               <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
