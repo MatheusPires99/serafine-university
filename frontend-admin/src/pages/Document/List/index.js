@@ -15,6 +15,7 @@ export default function DocumentList() {
       const response = await api.get("document");
 
       setDocuments(response.data);
+
       setLoading(false);
     } catch (err) {
       toast.error("Não foi possível carregar as informações dos documentos");
@@ -49,7 +50,15 @@ export default function DocumentList() {
               <tr key={document.id}>
                 <td>#{document.id}</td>
                 <td>{document.name}</td>
-                <td>{document.link}</td>
+                <td>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={document.link}
+                  >
+                    {document.link}
+                  </a>
+                </td>
                 <td>{document.description}</td>
                 <td>{document.category.name}</td>
                 <TableActions

@@ -54,20 +54,19 @@ export default function DocumentForm({ match }) {
     }
   }, [id]);
 
-  useEffect(() => {
-    async function loadCategoryOptions() {
-      const response = await api.get("category");
+  async function loadCategoryOptions() {
+    const response = await api.get("category");
 
-      setCategoryOptions(response.data);
-    }
+    setCategoryOptions(response.data);
+  }
 
-    loadCategoryOptions();
-  }, []);
-
-  async function handleSubmit({ name, description, link }) {
+  async function handleSubmit({ name, description, link, category_id }) {
     try {
       setButtonLoading(true);
-      const data = { name, description, link };
+
+      const data = { name, description, link, category_id };
+
+      console.log(data);
 
       if (id) {
         await api.put(`/document/${id}`, data);
@@ -121,11 +120,12 @@ export default function DocumentForm({ match }) {
               <label htmlFor="category_id">
                 Selecione qual categoria esse documento pertencerá
               </label>
-              <AsyncSelect
+              <Input name="category_id" type="text" />
+              {/* <AsyncSelect
                 name="category_id"
-                loadOptions={categoryOptions.name}
+                loadOptions={loadCategoryOptions}
                 required
-              />
+              /> */}
 
               <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
