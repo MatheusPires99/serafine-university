@@ -19,15 +19,17 @@ import SkeletonLoading from "~/components/SkeletonLoading";
 const schema = Yup.object().shape({
   name: Yup.string().required("O nome é obrigatório"),
   email: Yup.string().required("O e-mail é obrigatório"),
-  oldPassword: Yup.string().min(6, "A senha deve ter no mínimo 6 dígitos"),
+  oldPassword: Yup.string(),
   password: Yup.string()
-    .min(6)
+    .min(6, "A senha deve ter no mínimo 6 dígitos")
     .when("oldPassword", (oldPassword, field) =>
       oldPassword ? field.required("A senha antiga é obrigatória") : field
     ),
   confirmPassword: Yup.string().when("password", (password, field) =>
     password
-      ? field.required("A senha é obrigatória").oneOf([Yup.ref("password")])
+      ? field
+          .required("A senha é obrigatória")
+          .oneOf([Yup.ref("password")], "As senhas não correspondem")
       : field
   )
 });
@@ -102,7 +104,6 @@ export default function UserForm({ match }) {
 
       if (!id) {
         await api.post("/user", dataNew);
-        console.log(dataNew);
       }
 
       setButtonLoading(false);
@@ -139,7 +140,7 @@ export default function UserForm({ match }) {
 
               {id ? (
                 <>
-                  <label htmlFor="oldPassword">Senha antiga</label>
+                  <label htmlFor="oldPassword">Senha atual</label>
                   <Input name="oldPassword" type="password" />
                 </>
               ) : null}
@@ -154,7 +155,12 @@ export default function UserForm({ match }) {
               </label>
               <Input name="confirmPassword" type="password" />
 
-              <Select name="admin" options={userType} />
+              <label htmlFor="admin">Selecione o tipo do usuário</label>
+              <Select
+                name="admin"
+                placeholder="Selecione uma opção"
+                options={userType}
+              />
 
               <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>

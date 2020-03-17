@@ -5,7 +5,6 @@ export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-right: 45px;
 
   p {
     margin-bottom: 20px;

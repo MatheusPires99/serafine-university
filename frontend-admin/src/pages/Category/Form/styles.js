@@ -7,6 +7,7 @@ export const DocumentsList = styled.div`
   display: flex;
   flex-direction: column;
   display: ${props => (props.visible ? "block" : "none")};
+  margin-left: 45px;
 `;
 
 export const DocumentsListHeader = styled.header`

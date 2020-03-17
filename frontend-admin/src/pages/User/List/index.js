@@ -54,9 +54,7 @@ export default function UserList() {
                 <UserCell isAdmin={user.admin}>
                   {user.admin ? "Administrador" : "Franqueado"}
                 </UserCell>
-                <td>
-                  <TableActions id={user.id} route="user" />
-                </td>
+                <TableActions id={user.id} route="user" />
               </tr>
             ))}
           </tbody>

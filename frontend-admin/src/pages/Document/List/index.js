@@ -50,9 +50,7 @@ export default function DocumentList() {
                 <td>{document.name}</td>
                 <td>{document.description}</td>
                 <td>{document.category.name}</td>
-                <td>
-                  <TableActions id={document.id} route="document" />
-                </td>
+                <TableActions id={document.id} route="document" />
               </tr>
             ))}
           </tbody>

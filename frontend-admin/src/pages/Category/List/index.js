@@ -48,9 +48,7 @@ export default function CategoryList() {
                 <td>#{category.id}</td>
                 <td>{category.name}</td>
                 <td>{category.description}</td>
-                <td>
-                  <TableActions id={category.id} route="category" />
-                </td>
+                <TableActions id={category.id} route="category" />
               </tr>
             ))}
           </tbody>
