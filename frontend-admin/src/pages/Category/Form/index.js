@@ -8,7 +8,7 @@ import api from "~/services/api";
 import history from "~/services/history";
 
 import { TableContainer, TableActions } from "~/components/Table";
-import HeaderCreate from "~/components/Dashboard/HeaderCreate";
+import { HeaderForm } from "~/components/Dashboard";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
 import SubmitButton from "~/components/Buttons/SubmitButton";
@@ -81,7 +81,7 @@ export default function CategoryForm({ match }) {
 
   return (
     <>
-      <HeaderCreate id={id} lowercaseTitle="categoria" route="categories" />
+      <HeaderForm id={id} lowercaseTitle="categoria" route="categories" />
 
       <EditContainer>
         {loading ? (

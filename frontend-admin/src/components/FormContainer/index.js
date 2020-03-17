@@ -20,7 +20,6 @@ export const FormContainer = styled(Form)`
   input,
   textarea {
     width: 100%;
-    border-radius: 4px;
     border: 2px solid #eee;
     padding: 0 15px;
     margin-bottom: 20px;
@@ -47,11 +46,15 @@ export const FormContainer = styled(Form)`
 
   input {
     height: 44px;
+    border-radius: 4px;
   }
 
   textarea {
     height: 100%;
     padding: 15px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-weight: ${props => (props.bold ? "bold" : "normal")};
   }
 `;
 

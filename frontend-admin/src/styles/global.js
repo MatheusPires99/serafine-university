@@ -43,6 +43,7 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  /* Toastify */
   .foo {
     border-radius: 4px;
     padding: 10px 20px;

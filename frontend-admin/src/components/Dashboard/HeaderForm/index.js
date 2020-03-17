@@ -5,7 +5,7 @@ import { MdClear } from "react-icons/md";
 
 import { Container } from "./styles";
 
-export default function HeaderCreate({ id, lowercaseTitle, route }) {
+export default function HeaderForm({ id, lowercaseTitle, route }) {
   return (
     <Container>
       <h1>{id ? `Editar ${lowercaseTitle}` : `Cadastrar ${lowercaseTitle}`}</h1>
@@ -19,7 +19,7 @@ export default function HeaderCreate({ id, lowercaseTitle, route }) {
   );
 }
 
-HeaderCreate.propTypes = {
+HeaderForm.propTypes = {
   id: PropTypes.number.isRequired,
   lowercaseTitle: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired

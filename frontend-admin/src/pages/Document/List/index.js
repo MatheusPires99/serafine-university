@@ -4,27 +4,27 @@ import { toast } from "react-toastify";
 import api from "~/services/api";
 
 import { TableContainer, TableActions, TableLoading } from "~/components/Table";
-import Header from "~/components/Dashboard/Header";
+import { Header } from "~/components/Dashboard";
 
 export default function DocumentList() {
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function loadCategories() {
-      try {
-        const response = await api.get("document");
+  async function loadDocuments() {
+    try {
+      const response = await api.get("document");
 
-        setDocuments(response.data);
-        setLoading(false);
-      } catch (err) {
-        toast.error("Não foi possível carregar as informações dos documentos");
-        setLoading(false);
-      }
+      setDocuments(response.data);
+      setLoading(false);
+    } catch (err) {
+      toast.error("Não foi possível carregar as informações dos documentos");
+      setLoading(false);
     }
+  }
 
-    loadCategories();
-  }, [documents]);
+  useEffect(() => {
+    loadDocuments();
+  }, []);
 
   return (
     <>
@@ -50,7 +50,11 @@ export default function DocumentList() {
                 <td>{document.name}</td>
                 <td>{document.description}</td>
                 <td>{document.category.name}</td>
-                <TableActions id={document.id} route="document" />
+                <TableActions
+                  id={document.id}
+                  route="document"
+                  reloadList={loadDocuments}
+                />
               </tr>
             ))}
           </tbody>

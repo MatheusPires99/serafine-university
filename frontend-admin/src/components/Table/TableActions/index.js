@@ -8,7 +8,7 @@ import api from "~/services/api";
 
 import { Container, DeleteButton, ActionButtons } from "./styles";
 
-export default function TableActions({ id, route }) {
+export default function TableActions({ id, route, reloadList }) {
   const [visible, setVisible] = useState(false);
 
   function handleToggleVisible() {
@@ -18,6 +18,8 @@ export default function TableActions({ id, route }) {
   async function handleDelete() {
     try {
       await api.delete(`/${route}/${id}`);
+
+      reloadList();
 
       toast.success(`Item #${id} deletado com sucesso`);
     } catch (err) {
@@ -52,5 +54,6 @@ export default function TableActions({ id, route }) {
 
 TableActions.propTypes = {
   id: PropTypes.number.isRequired,
-  route: PropTypes.string.isRequired
+  route: PropTypes.string.isRequired,
+  reloadList: PropTypes.func.isRequired
 };

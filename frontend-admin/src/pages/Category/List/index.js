@@ -4,27 +4,27 @@ import { toast } from "react-toastify";
 import api from "~/services/api";
 
 import { TableContainer, TableActions, TableLoading } from "~/components/Table";
-import Header from "~/components/Dashboard/Header";
+import { Header } from "~/components/Dashboard";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function loadCategories() {
-      try {
-        const response = await api.get("category");
+  async function loadCategories() {
+    try {
+      const response = await api.get("category");
 
-        setCategories(response.data);
-        setLoading(false);
-      } catch (err) {
-        setLoading(false);
-        toast.error("Não foi possível carregar as informações das categorias");
-      }
+      setCategories(response.data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      toast.error("Não foi possível carregar as informações das categorias");
     }
+  }
 
+  useEffect(() => {
     loadCategories();
-  }, [categories]);
+  }, []);
 
   return (
     <>
@@ -48,7 +48,11 @@ export default function CategoryList() {
                 <td>#{category.id}</td>
                 <td>{category.name}</td>
                 <td>{category.description}</td>
-                <TableActions id={category.id} route="category" />
+                <TableActions
+                  id={category.id}
+                  route="category"
+                  reloadList={loadCategories}
+                />
               </tr>
             ))}
           </tbody>

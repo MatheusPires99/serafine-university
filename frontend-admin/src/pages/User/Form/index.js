@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Input } from "@rocketseat/unform";
-import Select from "react-select";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
@@ -8,23 +7,21 @@ import * as Yup from "yup";
 import api from "~/services/api";
 import history from "~/services/history";
 
-import HeaderCreate from "~/components/Dashboard/HeaderCreate";
+import { HeaderForm } from "~/components/Dashboard";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
 import SubmitButton from "~/components/Buttons/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
-// import { DocumentsList, DocumentsListHeader } from "./styles";
+import { ReactSelect } from "./styles";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("O nome é obrigatório"),
   email: Yup.string().required("O e-mail é obrigatório"),
   oldPassword: Yup.string(),
-  password: Yup.string()
-    .min(6, "A senha deve ter no mínimo 6 dígitos")
-    .when("oldPassword", (oldPassword, field) =>
-      oldPassword ? field.required("A senha antiga é obrigatória") : field
-    ),
+  password: Yup.string().when("oldPassword", (oldPassword, field) =>
+    oldPassword ? field.required("A senha nova é obrigatória") : field
+  ),
   confirmPassword: Yup.string().when("password", (password, field) =>
     password
       ? field
@@ -44,18 +41,13 @@ export default function UserForm({ match }) {
     password: null,
     confirmPassword: null
   });
+  const [admin, setAdmin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const userType = [
-    {
-      value: false,
-      label: "Franqueado"
-    },
-    {
-      value: true,
-      label: "Administrador"
-    }
+    { value: false, label: "Franqueado" },
+    { value: true, label: "Administrador" }
   ];
 
   useEffect(() => {
@@ -83,11 +75,11 @@ export default function UserForm({ match }) {
     email,
     oldPassword,
     password,
-    confirmPassword,
-    admin
+    confirmPassword
   }) {
     try {
       setButtonLoading(true);
+
       const dataNew = { name, email, password, confirmPassword, admin };
       const dataEdit = {
         name,
@@ -97,6 +89,8 @@ export default function UserForm({ match }) {
         confirmPassword,
         admin
       };
+
+      console.tron.log(admin);
 
       if (id) {
         await api.put(`/user/${id}`, dataEdit);
@@ -116,9 +110,15 @@ export default function UserForm({ match }) {
     }
   }
 
+  const handleChangeAdmin = selectedOption => {
+    const { value } = selectedOption;
+
+    setAdmin(value);
+  };
+
   return (
     <>
-      <HeaderCreate id={id} lowercaseTitle="usuários" route="users" />
+      <HeaderForm id={id} lowercaseTitle="usuários" route="users" />
 
       <EditContainer>
         {loading ? (
@@ -127,7 +127,7 @@ export default function UserForm({ match }) {
           <>
             <FormContainer
               initialData={users}
-              schema={schema}
+              schema={id ? null : schema}
               onSubmit={handleSubmit}
             >
               <p>Complete todos os campos a baixo:</p>
@@ -156,10 +156,12 @@ export default function UserForm({ match }) {
               <Input name="confirmPassword" type="password" />
 
               <label htmlFor="admin">Selecione o tipo do usuário</label>
-              <Select
+              <ReactSelect
                 name="admin"
                 placeholder="Selecione uma opção"
+                onChange={handleChangeAdmin}
                 options={userType}
+                isSearchable={false}
               />
 
               <SubmitButton loading={buttonLoading} text="Salvar" />
