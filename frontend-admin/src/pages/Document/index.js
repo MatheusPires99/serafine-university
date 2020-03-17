@@ -1,4 +1,4 @@
 import DocumentList from "./List";
-// import DocumentForm from "./Form";
+import DocumentForm from "./Form";
 
-export { DocumentList };
+export { DocumentList, DocumentForm };

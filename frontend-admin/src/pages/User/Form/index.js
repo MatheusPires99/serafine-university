@@ -27,19 +27,8 @@ const schemaNew = Yup.object().shape({
 });
 
 const schemaEdit = Yup.object().shape({
-  name: Yup.string().required(),
-  email: Yup.string().required(),
-  oldPassword: Yup.string(),
-  password: Yup.string().when("oldPassword", (oldPassword, field) =>
-    oldPassword ? field.required("A senha nova é obrigatória") : field
-  ),
-  confirmPassword: Yup.string().when("password", (password, field) =>
-    password
-      ? field
-          .required("A senha é obrigatória")
-          .oneOf([Yup.ref("password")], "As senhas não correspondem")
-      : field
-  )
+  name: Yup.string(),
+  email: Yup.string()
 });
 
 export default function UserForm({ match }) {
