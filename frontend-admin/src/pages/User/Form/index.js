@@ -15,9 +15,20 @@ import SkeletonLoading from "~/components/SkeletonLoading";
 
 import { ReactSelect } from "./styles";
 
-const schema = Yup.object().shape({
+const schemaNew = Yup.object().shape({
   name: Yup.string().required("O nome é obrigatório"),
   email: Yup.string().required("O e-mail é obrigatório"),
+  password: Yup.string()
+    .min(6, "A senha deve conter no mínimo 6 digitos")
+    .required("A senha é obirgatória"),
+  confirmPassword: Yup.string()
+    .required("A confirmação de senha é obrigatório")
+    .oneOf([Yup.ref("password")], "As senhas não correspondem")
+});
+
+const schemaEdit = Yup.object().shape({
+  name: Yup.string().required(),
+  email: Yup.string().required(),
   oldPassword: Yup.string(),
   password: Yup.string().when("oldPassword", (oldPassword, field) =>
     oldPassword ? field.required("A senha nova é obrigatória") : field
@@ -90,8 +101,6 @@ export default function UserForm({ match }) {
         admin
       };
 
-      console.tron.log(admin);
-
       if (id) {
         await api.put(`/user/${id}`, dataEdit);
       }
@@ -127,8 +136,9 @@ export default function UserForm({ match }) {
           <>
             <FormContainer
               initialData={users}
-              schema={id ? null : schema}
+              schema={id ? schemaEdit : schemaNew}
               onSubmit={handleSubmit}
+              width
             >
               <p>Complete todos os campos a baixo:</p>
 
