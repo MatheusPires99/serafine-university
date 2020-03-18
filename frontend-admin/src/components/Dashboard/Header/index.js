@@ -5,13 +5,18 @@ import { MdSearch, MdAdd } from "react-icons/md";
 
 import { Container } from "./styles";
 
-export default function Header({ title, route }) {
+export default function Header({ title, route, q, setQ }) {
   return (
     <Container>
       <h1>{title}</h1>
       <div>
         <form action="">
-          <input type="text" placeholder="Digite sua busca..." />
+          <input
+            type="text"
+            placeholder="Digite sua busca..."
+            value={q}
+            onChange={e => [setQ(e.target.value)]}
+          />
           <button type="submit">
             <MdSearch color="#fff" size={24} />
           </button>
