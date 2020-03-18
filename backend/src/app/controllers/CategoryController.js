@@ -1,12 +1,15 @@
 import * as Yup from "yup";
+import { Op } from "sequelize";
+
 import Category from "../models/Category";
 
 class CategoryController {
   async index(req, res) {
-    const { page = 1 } = req.query;
+    const { page = 1, q } = req.query;
+    const name = q || "";
 
     const category = await Category.findAll({
-      where: { status: true },
+      where: { status: true, name: { [Op.iLike]: `%${name}%` } },
       attributes: ["id", "name", "description", "status"],
       order: [
         ["status", "DESC"],
