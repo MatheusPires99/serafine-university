@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Input } from "@rocketseat/unform";
-import AsyncSelect from "react-select/async";
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
@@ -11,6 +10,7 @@ import history from "~/services/history";
 import { HeaderForm } from "~/components/Dashboard";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
+import AsyncSelect from "~/components/AsyncSelect";
 import SubmitButton from "~/components/Buttons/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
@@ -30,7 +30,6 @@ export default function DocumentForm({ match }) {
     description: null,
     link: null
   });
-  const [categoryOptions, setCategoryOptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -53,12 +52,6 @@ export default function DocumentForm({ match }) {
       loadDocumentDetails();
     }
   }, [id]);
-
-  async function loadCategoryOptions() {
-    const response = await api.get("category");
-
-    setCategoryOptions(response.data);
-  }
 
   async function handleSubmit({ name, description, link, category_id }) {
     try {
@@ -120,12 +113,11 @@ export default function DocumentForm({ match }) {
               <label htmlFor="category_id">
                 Selecione qual categoria esse documento pertencerá
               </label>
-              <Input name="category_id" type="text" />
-              {/* <AsyncSelect
+              <AsyncSelect
                 name="category_id"
-                loadOptions={loadCategoryOptions}
-                required
-              /> */}
+                placeholder=""
+                noOptionsMessage={() => "Nenhuma categoria encontrada"}
+              />
 
               <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
