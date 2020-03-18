@@ -22,6 +22,12 @@ export const TableContainer = styled.table`
       justify-content: flex-end;
     }
   }
+
+  .description-cell {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `;
 
 export default TableContainer;

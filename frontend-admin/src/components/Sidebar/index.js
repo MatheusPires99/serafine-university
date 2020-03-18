@@ -16,7 +16,7 @@ export default function Sidebar() {
       <Navigation>
         <span>DOCUMENTAÇÕES</span>
         <NavigationList>
-          <Link to="/">
+          <Link to="/dashboard">
             <MdDashboard size={20} />
             <strong>DASHBOARD</strong>
           </Link>

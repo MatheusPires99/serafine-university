@@ -75,7 +75,7 @@ export default function CategoryForm({ match }) {
       toast.success("Categoria salva com sucesso");
       history.push("/categories");
     } catch (err) {
-      toast.error("Não foi possível salvar as alterações");
+      toast.error("Algo deu errado ao salvar o item");
     }
   }
 

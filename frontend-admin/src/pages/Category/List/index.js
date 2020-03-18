@@ -9,13 +9,10 @@ import { Header } from "~/components/Dashboard";
 export default function CategoryList() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [q, setQ] = useState("");
 
   async function loadCategories() {
     try {
-      const response = await api.get("category", {
-        params: { q }
-      });
+      const response = await api.get("category");
 
       setCategories(response.data);
       setLoading(false);
@@ -25,15 +22,13 @@ export default function CategoryList() {
     }
   }
 
-  loadCategories();
-
   useEffect(() => {
     loadCategories();
-  }, [loadCategories]);
+  }, []);
 
   return (
     <>
-      <Header title="Categorias" route="category" q={q} setQ={setQ} />
+      <Header title="Categorias" route="category" />
 
       {loading ? (
         <TableLoading />
@@ -52,8 +47,12 @@ export default function CategoryList() {
               <tr key={category.id}>
                 <td>#{category.id}</td>
                 <td>{category.name}</td>
-                <td>{category.description}</td>
-                <TableActions id={category.id} route="category" />
+                <td className="description-cell">{category.description}</td>
+                <TableActions
+                  id={category.id}
+                  route="category"
+                  reloadList={loadCategories}
+                />
               </tr>
             ))}
           </tbody>

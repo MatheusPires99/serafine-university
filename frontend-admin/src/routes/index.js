@@ -4,6 +4,7 @@ import Route from "./Route";
 
 import SignIn from "../pages/SignIn";
 
+import Dashboard from "../pages/Dashboard";
 import { CategoryList, CategoryForm } from "../pages/Category";
 import { DocumentList, DocumentForm } from "../pages/Document";
 import { UserList, UserForm } from "../pages/User";
@@ -14,6 +15,8 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
+
+      <Route path="/dashboard" component={Dashboard} isPrivate />
 
       <Route path="/categories" component={CategoryList} isPrivate />
       <Route path="/category/new" component={CategoryForm} isPrivate />
