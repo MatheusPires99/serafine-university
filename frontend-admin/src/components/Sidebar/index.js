@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  MdDashboard,
   MdLayers,
   MdInsertDriveFile,
   MdGroup,
@@ -16,10 +15,6 @@ export default function Sidebar() {
       <Navigation>
         <span>DOCUMENTAÇÕES</span>
         <NavigationList>
-          <Link to="/dashboard">
-            <MdDashboard size={20} />
-            <strong>DASHBOARD</strong>
-          </Link>
           <Link to="/categories">
             <MdLayers size={20} />
             <strong>CATEGORIAS</strong>

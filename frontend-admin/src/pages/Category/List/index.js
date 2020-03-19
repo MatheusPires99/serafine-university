@@ -43,7 +43,6 @@ export default function CategoryList() {
             <tr>
               <th>ID</th>
               <th>NOME</th>
-              <th>DESCRIÇÃO</th>
               <th />
             </tr>
           </thead>
@@ -52,7 +51,6 @@ export default function CategoryList() {
               <tr key={category.id}>
                 <td>#{category.id}</td>
                 <td>{category.name}</td>
-                <td>{category.description}</td>
                 <TableActions
                   id={category.id}
                   route="category"

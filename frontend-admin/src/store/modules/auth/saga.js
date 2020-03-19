@@ -28,7 +28,7 @@ export function* signIn({ payload }) {
 
     yield put(signInSuccess(token, user));
 
-    history.push("/dashboard");
+    history.push("/categories");
   } catch (err) {
     toast.error("E-mail ou senha inválidos");
     yield put(signFailure());

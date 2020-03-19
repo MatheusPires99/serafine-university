@@ -7,6 +7,8 @@ export const Container = styled.div`
 
   div {
     width: 100%;
+    font-size: 20px;
+    line-height: 2.5;
 
     & + div {
       margin-left: 50px;

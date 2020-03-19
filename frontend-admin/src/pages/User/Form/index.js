@@ -8,7 +8,6 @@ import api from "~/services/api";
 import history from "~/services/history";
 
 import { HeaderForm } from "~/components/Dashboard";
-import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
@@ -122,54 +121,52 @@ export default function UserForm({ match }) {
         buttonLoading={buttonLoading}
       />
 
-      <EditContainer>
-        {loading ? (
-          <SkeletonLoading />
-        ) : (
-          <>
-            <FormContainer
-              id="submit"
-              initialData={users}
-              schema={id ? schemaEdit : schemaNew}
-              onSubmit={handleSubmit}
-            >
-              <p>Complete todos os campos a baixo:</p>
+      {loading ? (
+        <SkeletonLoading />
+      ) : (
+        <>
+          <FormContainer
+            id="submit"
+            initialData={users}
+            schema={id ? schemaEdit : schemaNew}
+            onSubmit={handleSubmit}
+          >
+            <p>Complete todos os campos a baixo:</p>
 
-              <label htmlFor="name">Nome</label>
-              <Input name="name" type="text" />
+            <label htmlFor="name">Nome</label>
+            <Input name="name" type="text" />
 
-              <label htmlFor="email">E-mail</label>
-              <Input name="email" type="email" />
+            <label htmlFor="email">E-mail</label>
+            <Input name="email" type="email" />
 
-              {id ? (
-                <>
-                  <label htmlFor="oldPassword">Senha atual</label>
-                  <Input name="oldPassword" type="password" />
-                </>
-              ) : null}
+            {id ? (
+              <>
+                <label htmlFor="oldPassword">Senha atual</label>
+                <Input name="oldPassword" type="password" />
+              </>
+            ) : null}
 
-              <label htmlFor="password">{id ? "Nova senha" : "Senha"}</label>
-              <Input name="password" type="password" />
+            <label htmlFor="password">{id ? "Nova senha" : "Senha"}</label>
+            <Input name="password" type="password" />
 
-              <label htmlFor="confirmPassword">
-                {id
-                  ? "Digite mais uma vez a nova senha"
-                  : "Digite a senha novamente"}
-              </label>
-              <Input name="confirmPassword" type="password" />
+            <label htmlFor="confirmPassword">
+              {id
+                ? "Digite mais uma vez a nova senha"
+                : "Digite a senha novamente"}
+            </label>
+            <Input name="confirmPassword" type="password" />
 
-              <label htmlFor="admin">Selecione o tipo do usuário</label>
-              <ReactSelect
-                name="admin"
-                placeholder="Selecione uma opção"
-                onChange={handleChangeAdmin}
-                options={userType}
-                isSearchable={false}
-              />
-            </FormContainer>
-          </>
-        )}
-      </EditContainer>
+            <label htmlFor="admin">Selecione o tipo do usuário</label>
+            <ReactSelect
+              name="admin"
+              placeholder="Selecione uma opção"
+              onChange={handleChangeAdmin}
+              options={userType}
+              isSearchable={false}
+            />
+          </FormContainer>
+        </>
+      )}
     </>
   );
 }

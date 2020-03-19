@@ -40,7 +40,6 @@ export default function DocumentList() {
               <th>ID</th>
               <th>NOME</th>
               <th>LINK</th>
-              <th>DESCRIÇÃO</th>
               <th>CATEGORIA</th>
               <th />
             </tr>
@@ -59,7 +58,6 @@ export default function DocumentList() {
                     {document.link}
                   </a>
                 </td>
-                <td>{document.description}</td>
                 <td>{document.category.name}</td>
                 <TableActions
                   id={document.id}
