@@ -1,11 +1,15 @@
 import * as Yup from "yup";
+import { Op } from "sequelize";
+
 import User from "../models/User";
 
 class UserController {
   async index(req, res) {
-    const { page = 1 } = req.query;
+    const { page = 1, q = "" } = req.query;
+    const name = q || "";
 
     const users = await User.findAll({
+      where: { name: { [Op.iLike]: `%${name}%` } },
       attributes: ["id", "name", "email", "admin"],
       order: [["created_at", "DESC"]],
       limit: 20,

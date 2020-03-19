@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import { Op } from "sequelize";
 
 import Category from "../models/Category";
 import Document from "../models/Document";
@@ -9,10 +10,11 @@ import Queue from "../../lib/Queue";
 
 class DocumentController {
   async index(req, res) {
-    const { page = 1 } = req.query;
+    const { page = 1, q = "" } = req.query;
+    const name = q || "";
 
     const documents = await Document.findAll({
-      where: { status: true },
+      where: { status: true, name: { [Op.iLike]: `%${name}%` } },
       attributes: ["id", "name", "description", "link", "status"],
       order: [
         ["status", "DESC"],
