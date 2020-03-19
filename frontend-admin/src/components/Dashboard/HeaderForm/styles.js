@@ -18,10 +18,11 @@ export const Container = styled.header`
     a {
       font-weight: bold;
       border: 0;
-      background: #ccc;
       color: #fff;
+      background: #ccc;
       display: flex;
       align-items: center;
+      width: 140px;
       padding: 0 20px;
       height: 34px;
       border-radius: 4px;
@@ -35,5 +36,28 @@ export const Container = styled.header`
         margin-right: 5px;
       }
     }
+  }
+`;
+
+export const SubmitButton = styled.button`
+  font-weight: bold;
+  border: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  width: 140px;
+  height: 34px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  background: #ffc72c;
+  margin-right: 10px;
+
+  svg {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background: ${darken(0.05, "#ffc72c")};
   }
 `;

@@ -11,7 +11,6 @@ import { TableContainer, TableActions } from "~/components/Table";
 import { HeaderForm } from "~/components/Dashboard";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
-import SubmitButton from "~/components/Buttons/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
@@ -81,7 +80,12 @@ export default function CategoryForm({ match }) {
 
   return (
     <>
-      <HeaderForm id={id} lowercaseTitle="categoria" route="categories" />
+      <HeaderForm
+        id={id}
+        lowercaseTitle="categoria"
+        route="categories"
+        buttonLoading={buttonLoading}
+      />
 
       <EditContainer>
         {loading ? (
@@ -89,6 +93,7 @@ export default function CategoryForm({ match }) {
         ) : (
           <>
             <FormContainer
+              id="submit"
               initialData={category}
               schema={schema}
               onSubmit={handleSubmit}
@@ -106,8 +111,6 @@ export default function CategoryForm({ match }) {
                 cols="30"
                 rows="10"
               />
-
-              <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
 
             <DocumentsList visible={visible}>

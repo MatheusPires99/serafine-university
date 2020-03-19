@@ -10,7 +10,7 @@ import { signInRequest } from "~/store/modules/auth/actions";
 import logo from "~/assets/logo.png";
 
 import FormContainer from "~/components/FormContainer";
-import SubmitButton from "~/components/Buttons/SubmitButton";
+import Spinner from "~/components/Buttons/Spinner";
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -31,7 +31,7 @@ export default function SignIn() {
     <>
       <img src={logo} alt="Universidade Serafine" />
 
-      <FormContainer schema={schema} onSubmit={handleSubmit}>
+      <FormContainer id="submit" schema={schema} onSubmit={handleSubmit}>
         <div>
           <Input name="email" type="email" placeholder="E-mail" />
           <FaEnvelope size={14} />
@@ -43,7 +43,7 @@ export default function SignIn() {
 
         <Link to="/">Esqueci minha senha</Link>
 
-        <SubmitButton loading={loading} text="Entrar" />
+        <button type="submit">{loading ? <Spinner /> : "Entrar"}</button>
       </FormContainer>
     </>
   );

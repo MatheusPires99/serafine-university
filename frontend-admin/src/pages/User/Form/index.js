@@ -10,7 +10,6 @@ import history from "~/services/history";
 import { HeaderForm } from "~/components/Dashboard";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
-import SubmitButton from "~/components/Buttons/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 import { ReactSelect } from "./styles";
@@ -116,7 +115,12 @@ export default function UserForm({ match }) {
 
   return (
     <>
-      <HeaderForm id={id} lowercaseTitle="usuários" route="users" />
+      <HeaderForm
+        id={id}
+        lowercaseTitle="usuários"
+        route="users"
+        buttonLoading={buttonLoading}
+      />
 
       <EditContainer>
         {loading ? (
@@ -124,6 +128,7 @@ export default function UserForm({ match }) {
         ) : (
           <>
             <FormContainer
+              id="submit"
               initialData={users}
               schema={id ? schemaEdit : schemaNew}
               onSubmit={handleSubmit}
@@ -161,8 +166,6 @@ export default function UserForm({ match }) {
                 options={userType}
                 isSearchable={false}
               />
-
-              <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
           </>
         )}

@@ -11,7 +11,6 @@ import { HeaderForm } from "~/components/Dashboard";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
 import AsyncSelect from "~/components/AsyncSelect";
-import SubmitButton from "~/components/Buttons/SubmitButton";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 // import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
@@ -81,7 +80,12 @@ export default function DocumentForm({ match }) {
 
   return (
     <>
-      <HeaderForm id={id} lowercaseTitle="documentos" route="documents" />
+      <HeaderForm
+        id={id}
+        lowercaseTitle="documentos"
+        route="documents"
+        buttonLoading={buttonLoading}
+      />
 
       <EditContainer>
         {loading ? (
@@ -89,6 +93,7 @@ export default function DocumentForm({ match }) {
         ) : (
           <>
             <FormContainer
+              id="submit"
               initialData={documents}
               schema={schema}
               onSubmit={handleSubmit}
@@ -118,8 +123,6 @@ export default function DocumentForm({ match }) {
                 placeholder=""
                 noOptionsMessage={() => "Nenhuma categoria encontrada"}
               />
-
-              <SubmitButton loading={buttonLoading} text="Salvar" />
             </FormContainer>
           </>
         )}
