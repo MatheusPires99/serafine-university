@@ -8,9 +8,10 @@ import * as Yup from "yup";
 import { signInRequest } from "~/store/modules/auth/actions";
 
 import logo from "~/assets/logo.png";
+import serafineLogin from "~/assets/serafineLogin.jpg";
 
 import FormContainer from "~/components/FormContainer";
-import SubmitButton from "~/components/Buttons/SubmitButton";
+import Spinner from "~/components/Spinner";
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -29,22 +30,23 @@ export default function SignIn() {
 
   return (
     <>
-      <img src={logo} alt="Universidade Serafine" />
+      <img src={serafineLogin} alt="Serafine Campaign" />
+      <div>
+        <img src={logo} alt="Universidade Serafine" />
 
-      <FormContainer schema={schema} onSubmit={handleSubmit}>
-        <div>
-          <Input name="email" type="email" placeholder="E-mail" />
-          <FaEnvelope size={14} />
-        </div>
-        <div>
-          <Input name="password" type="password" placeholder="Senha" />
-          <FaLock size={14} />
-        </div>
-
-        <Link to="/">Esqueci minha senha</Link>
-
-        <SubmitButton loading={loading} text="Entrar" />
-      </FormContainer>
+        <FormContainer schema={schema} onSubmit={handleSubmit}>
+          <div>
+            <Input name="email" type="email" placeholder="E-mail" />
+            <FaEnvelope size={14} />
+          </div>
+          <div>
+            <Input name="password" type="password" placeholder="Senha" />
+            <FaLock size={14} />
+          </div>
+          <Link to="/">Esqueci minha senha</Link>
+          <button type="submit">{loading ? <Spinner /> : "Entrar"}</button>;
+        </FormContainer>
+      </div>
     </>
   );
 }

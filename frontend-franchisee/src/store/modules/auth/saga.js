@@ -17,15 +17,6 @@ export function* signIn({ payload }) {
 
     const { token, user } = response.data;
 
-    if (user.admin) {
-      toast.error(
-        "Apenas usuários não administradores tem acesso a essa página."
-      );
-
-      yield put(signFailure());
-      return;
-    }
-
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
