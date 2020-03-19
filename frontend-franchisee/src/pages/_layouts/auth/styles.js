@@ -47,6 +47,7 @@ export const Content = styled.div`
           border-color: #ddd;
           padding: 0 15px 0 40px;
           margin-bottom: 10px;
+          font-size: 14px;
         }
 
         span {
