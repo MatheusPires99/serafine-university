@@ -10,7 +10,7 @@ import { signInRequest } from "~/store/modules/auth/actions";
 import logo from "~/assets/logo.png";
 
 import FormContainer from "~/components/FormContainer";
-import Spinner from "~/components/Buttons/Spinner";
+import Spinner from "~/components/Spinner";
 
 const schema = Yup.object().shape({
   email: Yup.string()
