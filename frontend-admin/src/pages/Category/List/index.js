@@ -29,7 +29,7 @@ export default function CategoryList() {
 
   useEffect(() => {
     loadCategories();
-  }, [loadCategories]);
+  }, []); // eslint-disable-line
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function CategoryList() {
               <tr key={category.id}>
                 <td>#{category.id}</td>
                 <td>{category.name}</td>
-                <td className="description-cell">{category.description}</td>
+                <td>{category.description}</td>
                 <TableActions
                   id={category.id}
                   route="category"

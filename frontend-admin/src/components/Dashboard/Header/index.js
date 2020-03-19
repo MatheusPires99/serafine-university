@@ -3,24 +3,22 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { MdSearch, MdAdd } from "react-icons/md";
 
-import { Container } from "./styles";
+import { Container, SearchBar } from "./styles";
 
 export default function Header({ title, route, q, setQ }) {
   return (
     <Container>
       <h1>{title}</h1>
       <div>
-        <form action="">
+        <SearchBar>
+          <MdSearch color="#ccc" size={22} />
           <input
             type="text"
             placeholder="Digite sua busca..."
             value={q}
             onChange={e => [setQ(e.target.value)]}
           />
-          <button type="submit">
-            <MdSearch color="#fff" size={24} />
-          </button>
-        </form>
+        </SearchBar>
         <Link to={`/${route}/new`}>
           <MdAdd color="#fff" size={24} />
           NOVO
@@ -32,7 +30,9 @@ export default function Header({ title, route, q, setQ }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  route: PropTypes.string
+  route: PropTypes.string,
+  q: PropTypes.string.isRequired,
+  setQ: PropTypes.string.isRequired
 };
 
 Header.defaultProps = {

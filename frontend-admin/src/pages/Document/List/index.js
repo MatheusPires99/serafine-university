@@ -59,7 +59,7 @@ export default function DocumentList() {
                     {document.link}
                   </a>
                 </td>
-                <td className="description-cell">{document.description}</td>
+                <td>{document.description}</td>
                 <td>{document.category.name}</td>
                 <TableActions
                   id={document.id}
