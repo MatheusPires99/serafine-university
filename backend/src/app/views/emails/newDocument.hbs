@@ -25,6 +25,18 @@
   .document-container {
     text-align: center;
     margin-bottom: 15px;
+    padding: 0 35px;
+  }
+
+  .document-container > p {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .document-container > p strong {
+    font-size: 18px;
+    margin-top: 5px;
   }
 
   .link {
@@ -42,7 +54,7 @@
 </div>
 <strong class="user-name">Olá, {{ name }}</strong>
 <div class="document-container">
-  <p>Temos um novo documento no site sobre <strong>{{ documentName }}.</strong></p>
+  <p>Temos um novo documento disponível no site sobre: <strong>{{ documentName }}.</strong></p>
   <p>{{ documentDescription }}</p>
 </div>
 <a class="link" href="{{ link }}">Visualizar documento</a>
