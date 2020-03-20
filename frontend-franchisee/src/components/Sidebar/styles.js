@@ -4,7 +4,7 @@ export const Container = styled.aside`
   position: ${props => (props.fixed ? "fixed" : "relative")};
   top: ${props => (props.fixed ? "17px" : "0")};
   padding-right: ${props => (props.fixed ? "0px" : "50px")};
-  max-width: 200px;
+  min-width: 200px;
 
   ul li {
     cursor: pointer;

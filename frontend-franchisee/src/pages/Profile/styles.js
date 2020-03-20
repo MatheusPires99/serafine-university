@@ -3,7 +3,31 @@ import { darken } from "polished";
 
 export const Content = styled.div`
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto 120px;
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 40px;
+    position: relative;
+
+    aside {
+      position: absolute;
+      left: -14px;
+      display: flex;
+
+      svg:nth-child(1) {
+        position: absolute;
+        left: 15px;
+      }
+    }
+
+    h1 {
+      padding-left: 45px;
+    }
+  }
 
   form {
     display: flex;
@@ -16,12 +40,13 @@ export const Content = styled.div`
       position: relative;
 
       input {
+        width: 100%;
         border: 2px solid #ddd;
         border-radius: 4px;
         padding: 0 15px 0 40px;
         height: 44px;
         font-size: 14px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         transition: border-color 0.2s;
 
         &::placeholder {
@@ -59,12 +84,9 @@ export const Content = styled.div`
 
     button {
       background: #ffc72c;
-      border-radius: 4px;
-      border: 0;
       color: #fff;
-      font-weight: bold;
-      height: 44px;
-      transition: background 0.2s;
+      border: 0;
+      margin-bottom: 15px;
 
       &:hover {
         background: ${darken(0.05, "#ffc72c")};
@@ -73,17 +95,17 @@ export const Content = styled.div`
   }
 
   button {
-    background: #ffc72c;
     border-radius: 4px;
-    border: 0;
-    color: #fff;
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
     font-weight: bold;
-    width: 100%:
+    width: 100%;
     height: 44px;
-    transition: background 0.2s;
+    transition: color, background 0.2s;
 
     &:hover {
-      background: ${darken(0.05, "#ffc72c")};
+      background: ${darken(0.05, "#e74c3c")};
+      color: #fff;
     }
   }
 `;

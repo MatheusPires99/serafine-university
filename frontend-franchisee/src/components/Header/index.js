@@ -9,7 +9,9 @@ export default function Header() {
   return (
     <Container>
       <Content>
-        <img src={logo} alt="Serafine" />
+        <Link to="/">
+          <img src={logo} alt="Serafine" />
+        </Link>
 
         <Profile>
           <strong>Nome do usuário</strong>

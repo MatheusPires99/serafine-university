@@ -1,4 +1,5 @@
 import React from "react";
+import { MdChevronRight } from "react-icons/md";
 import { Form, Input } from "@rocketseat/unform";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 
@@ -7,6 +8,14 @@ import { Content } from "./styles";
 export default function Profile() {
   return (
     <Content>
+      <div>
+        <aside>
+          <MdChevronRight size={44} color="#ffc72c" />
+          <MdChevronRight size={44} color="#ffc72c" />
+        </aside>
+        <h1>Perfil</h1>
+      </div>
+
       <Form>
         <div>
           <Input name="name" placeholder="Nome complete" />
