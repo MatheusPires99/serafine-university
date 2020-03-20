@@ -11,26 +11,31 @@ import { UserCell } from "./styles";
 export default function UserList() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  async function loadUsers() {
-    try {
-      const response = await api.get("user");
-
-      setUsers(response.data);
-      setLoading(false);
-    } catch (err) {
-      toast.error("Não foi possível carregar as informações dos usuários");
-      setLoading(false);
-    }
-  }
+  const [q, setQ] = useState("");
 
   useEffect(() => {
+    async function loadUsers() {
+      try {
+        const response = await api.get("user", {
+          params: {
+            q
+          }
+        });
+
+        setUsers(response.data);
+        setLoading(false);
+      } catch (err) {
+        toast.error("Não foi possível carregar as informações dos usuários");
+        setLoading(false);
+      }
+    }
+
     loadUsers();
-  }, []);
+  }, [q]);
 
   return (
     <>
-      <Header title="Usuários" route="user" />
+      <Header title="Usuários" route="user" q={q} setQ={setQ} />
 
       {loading ? (
         <TableLoading />
@@ -57,7 +62,8 @@ export default function UserList() {
                 <TableActions
                   id={user.id}
                   route="user"
-                  reloadList={loadUsers}
+                  list={users}
+                  setList={setUsers}
                 />
               </tr>
             ))}

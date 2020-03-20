@@ -11,25 +11,25 @@ export default function CategoryList() {
   const [loading, setLoading] = useState(true);
   const [q, setQ] = useState("");
 
-  async function loadCategories() {
-    try {
-      const response = await api.get("category", {
-        params: {
-          q
-        }
-      });
-
-      setCategories(response.data);
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      toast.error("Não foi possível carregar as informações das categorias");
-    }
-  }
-
   useEffect(() => {
+    async function loadCategories() {
+      try {
+        const response = await api.get("category", {
+          params: {
+            q
+          }
+        });
+
+        setCategories(response.data);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        toast.error("Não foi possível carregar as informações das categorias");
+      }
+    }
+
     loadCategories();
-  }, []); // eslint-disable-line
+  }, [q]);
 
   return (
     <>
@@ -54,7 +54,8 @@ export default function CategoryList() {
                 <TableActions
                   id={category.id}
                   route="category"
-                  reloadList={loadCategories}
+                  list={categories}
+                  setList={setCategories}
                 />
               </tr>
             ))}

@@ -8,7 +8,7 @@ import api from "~/services/api";
 
 import { Container, DeleteButton, ActionButtons } from "./styles";
 
-export default function TableActions({ id, route, reloadList }) {
+export default function TableActions({ id, route, list, setList }) {
   const [visible, setVisible] = useState(false);
 
   function handleToggleVisible() {
@@ -19,7 +19,10 @@ export default function TableActions({ id, route, reloadList }) {
     try {
       await api.delete(`/${route}/${id}`);
 
-      reloadList();
+      // eslint-disable-next-line react/prop-types
+      const listFilter = list.filter(e => e.id !== id);
+
+      setList(listFilter);
 
       toast.success(`Item #${id} deletado com sucesso`);
     } catch (err) {
@@ -55,5 +58,6 @@ export default function TableActions({ id, route, reloadList }) {
 TableActions.propTypes = {
   id: PropTypes.number.isRequired,
   route: PropTypes.string.isRequired,
-  reloadList: PropTypes.func.isRequired
+  list: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  setList: PropTypes.func.isRequired
 };

@@ -9,27 +9,32 @@ import { Header } from "~/components/Dashboard";
 export default function DocumentList() {
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  async function loadDocuments() {
-    try {
-      const response = await api.get("document");
-
-      setDocuments(response.data);
-
-      setLoading(false);
-    } catch (err) {
-      toast.error("Não foi possível carregar as informações dos documentos");
-      setLoading(false);
-    }
-  }
+  const [q, setQ] = useState("");
 
   useEffect(() => {
+    async function loadDocuments() {
+      try {
+        const response = await api.get("document", {
+          params: {
+            q
+          }
+        });
+
+        setDocuments(response.data);
+
+        setLoading(false);
+      } catch (err) {
+        toast.error("Não foi possível carregar as informações dos documentos");
+        setLoading(false);
+      }
+    }
+
     loadDocuments();
-  }, []);
+  }, [q]);
 
   return (
     <>
-      <Header title="Documentos" route="document" />
+      <Header title="Documentos" route="document" q={q} setQ={setQ} />
 
       {loading ? (
         <TableLoading />
@@ -62,7 +67,8 @@ export default function DocumentList() {
                 <TableActions
                   id={document.id}
                   route="document"
-                  reloadList={loadDocuments}
+                  list={documents}
+                  setList={setDocuments}
                 />
               </tr>
             ))}
