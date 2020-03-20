@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from "react";
 import { Input } from "@rocketseat/unform";
 import PropTypes from "prop-types";
@@ -10,7 +11,7 @@ import history from "~/services/history";
 import { HeaderForm } from "~/components/Dashboard";
 import EditContainer from "~/components/EditContainer";
 import FormContainer from "~/components/FormContainer";
-import AsyncSelect from "~/components/AsyncSelect";
+import AsyncReactSelect from "~/components/AsyncReactSelect";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 // import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
@@ -29,6 +30,7 @@ export default function DocumentForm({ match }) {
     description: null,
     link: null
   });
+  const [selectedCategory, setSelectedCategory] = useState({});
   const [loading, setLoading] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
 
@@ -56,9 +58,9 @@ export default function DocumentForm({ match }) {
     try {
       setButtonLoading(true);
 
-      const data = { name, description, link, category_id };
+      category_id = selectedCategory;
 
-      console.log(data);
+      const data = { name, description, link, category_id };
 
       if (id) {
         await api.put(`/document/${id}`, data);
@@ -70,7 +72,7 @@ export default function DocumentForm({ match }) {
 
       setButtonLoading(false);
 
-      toast.success("Documento salva com sucesso");
+      toast.success("Documento salvo com sucesso");
       history.push("/documents");
     } catch (err) {
       setButtonLoading(false);
@@ -118,10 +120,11 @@ export default function DocumentForm({ match }) {
               <label htmlFor="category_id">
                 Selecione qual categoria esse documento pertencerá
               </label>
-              <AsyncSelect
+              <AsyncReactSelect
                 name="category_id"
-                placeholder=""
+                placeholder="Selecione uma opção..."
                 noOptionsMessage={() => "Nenhuma categoria encontrada"}
+                setSelectedCategory={setSelectedCategory}
               />
             </FormContainer>
           </>

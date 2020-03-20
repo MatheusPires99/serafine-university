@@ -56,6 +56,8 @@ export default function UserForm({ match }) {
           setLoading(true);
           const response = await api.get(`/user/${id}`);
 
+          setAdmin(response.data.admin);
+
           setUsers(response.data);
 
           setLoading(false);
@@ -67,6 +69,12 @@ export default function UserForm({ match }) {
       loadUserDetails();
     }
   }, [id]);
+
+  const handleChangeAdmin = selectedOption => {
+    const { value } = selectedOption;
+
+    setAdmin(value);
+  };
 
   async function handleSubmit({
     name,
@@ -105,12 +113,6 @@ export default function UserForm({ match }) {
       toast.error("Não foi possível salvar as alterações");
     }
   }
-
-  const handleChangeAdmin = selectedOption => {
-    const { value } = selectedOption;
-
-    setAdmin(value);
-  };
 
   return (
     <>
@@ -157,13 +159,45 @@ export default function UserForm({ match }) {
             <Input name="confirmPassword" type="password" />
 
             <label htmlFor="admin">Selecione o tipo do usuário</label>
-            <ReactSelect
-              name="admin"
-              placeholder="Selecione uma opção"
-              onChange={handleChangeAdmin}
-              options={userType}
-              isSearchable={false}
-            />
+            {users.admin ? (
+              <ReactSelect
+                name="admin"
+                placeholder="Selecione uma opção"
+                onChange={handleChangeAdmin}
+                options={userType}
+                isSearchable={false}
+                defaultValue={{
+                  value: true,
+                  label: "Administrador"
+                }}
+                theme={theme => ({
+                  ...theme,
+                  colors: {
+                    ...theme.colors,
+                    primary: "#ffc72c"
+                  }
+                })}
+              />
+            ) : (
+              <ReactSelect
+                name="admin"
+                placeholder="Selecione uma opção..."
+                onChange={handleChangeAdmin}
+                options={userType}
+                isSearchable={false}
+                defaultValue={{
+                  value: false,
+                  label: "Franqueado"
+                }}
+                theme={theme => ({
+                  ...theme,
+                  colors: {
+                    ...theme.colors,
+                    primary: "#ffc72c"
+                  }
+                })}
+              />
+            )}
           </FormContainer>
         </>
       )}

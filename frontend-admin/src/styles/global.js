@@ -49,4 +49,19 @@ export default createGlobalStyle`
     padding: 10px 20px;
     font-size: 16px;
   }
+
+  /* React Select */
+  .css-yk16xz-control {
+    border: 1px solid #eee;
+  }
+
+  .css-1hwfws3 {
+    padding: 10px;
+    height: 44px;
+  }
+
+  .css-1uccc91-singleValue {
+    padding: 10px 0px;
+    color: #272727;
+  }
 `;

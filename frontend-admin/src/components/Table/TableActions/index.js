@@ -20,7 +20,7 @@ export default function TableActions({ id, route, list, setList }) {
       await api.delete(`/${route}/${id}`);
 
       // eslint-disable-next-line react/prop-types
-      const listFilter = list.filter(e => e.id !== id);
+      const listFilter = list.filter(l => l.id !== id);
 
       setList(listFilter);
 
