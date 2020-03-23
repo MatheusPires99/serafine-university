@@ -5,7 +5,7 @@ import {
   MdGroup,
   MdPersonAdd
 } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { Container, Navigation, NavigationList } from "./styles";
 
@@ -15,27 +15,28 @@ export default function Sidebar() {
       <Navigation>
         <span>DOCUMENTAÇÕES</span>
         <NavigationList>
-          <Link to="/categories">
+          <NavLink to="/categories" activeClassName="selected">
             <MdLayers size={20} />
             <strong>CATEGORIAS</strong>
-          </Link>
-          <Link to="/documents">
+          </NavLink>
+          <NavLink to="/documents" activeClassName="selected">
             <MdInsertDriveFile size={20} />
             <strong>DOCUMENTOS</strong>
-          </Link>
+          </NavLink>
         </NavigationList>
       </Navigation>
+
       <Navigation>
         <span>USUÁRIOS</span>
         <NavigationList>
-          <Link to="/users">
+          <NavLink to="/users" activeClassName="selected">
             <MdGroup size={20} />
             <strong>USUÁRIOS</strong>
-          </Link>
-          <Link to="/user/new">
+          </NavLink>
+          <NavLink to="/user/new" activeClassName="selected">
             <MdPersonAdd size={20} />
             <strong>CRIAR USUÁRIO</strong>
-          </Link>
+          </NavLink>
         </NavigationList>
       </Navigation>
     </Container>

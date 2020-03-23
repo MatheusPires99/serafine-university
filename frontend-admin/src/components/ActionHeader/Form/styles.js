@@ -24,7 +24,7 @@ export const Container = styled.header`
       align-items: center;
       width: 140px;
       padding: 0 20px;
-      height: 34px;
+      height: 36px;
       border-radius: 4px;
       transition: background 0.2s;
 
@@ -47,7 +47,7 @@ export const SubmitButton = styled.button`
   align-items: center;
   padding: 0 20px;
   width: 140px;
-  height: 34px;
+  height: 36px;
   border-radius: 4px;
   transition: background 0.2s;
   background: #ffc72c;

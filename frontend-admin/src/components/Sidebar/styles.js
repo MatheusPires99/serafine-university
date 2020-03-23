@@ -35,6 +35,10 @@ export const NavigationList = styled.div`
       background: ${darken(0.05, "#272727")};
     }
 
+    &.selected {
+      background: ${darken(0.05, "#272727")};
+    }
+
     svg {
       margin-right: 10px;
     }

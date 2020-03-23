@@ -8,7 +8,7 @@ export const Container = styled.div`
   div {
     width: 100%;
     font-size: 20px;
-    line-height: 2.5;
+    line-height: 2;
   }
 `;
 

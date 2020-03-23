@@ -59,7 +59,7 @@ export const SearchBar = styled.div`
     }
 
     &::placeholder {
-      color: #ccc;
+      color: #999;
     }
   }
 `;
