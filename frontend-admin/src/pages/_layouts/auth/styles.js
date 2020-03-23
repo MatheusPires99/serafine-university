@@ -1,22 +1,31 @@
 import styled from "styled-components";
 import { darken } from "polished";
 
+import ball from "~/assets/ball.png";
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+  background: #272727;
+  background-image: url(${ball});
+  background-repeat: repeat;
 `;
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 360px;
+  max-width: 400px;
   margin: 0 auto;
   text-align: center;
 
   img {
     width: 200px;
+  }
+
+  .signIn-logo {
+    width: 100px;
   }
 
   form {
@@ -84,6 +93,6 @@ export const Content = styled.div`
 export const SerafineRights = styled.span`
   position: absolute;
   bottom: 36px;
-  color: #666;
+  color: #999;
   font-size: 10px;
 `;
