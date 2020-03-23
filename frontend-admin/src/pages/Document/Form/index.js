@@ -11,8 +11,6 @@ import history from "~/services/history";
 import { HeaderForm } from "~/components/ActionHeader";
 import { FormContainer, FormLoading, Select } from "~/components/Form";
 
-// import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
-
 const schema = Yup.object().shape({
   name: Yup.string().required("O nome do documento é obrigatório"),
   description: Yup.string().required("A descrição do documento é obrigatório"),
@@ -86,15 +84,19 @@ export default function DocumentForm({ match }) {
     try {
       setButtonLoading(true);
 
-      category_id = selectedCategory.id;
-
-      const data = { name, description, link, category_id };
-
       if (id) {
+        category_id = selectedCategory.id;
+
+        const data = { name, description, link, category_id };
+
         await api.put(`/document/${id}`, data);
       }
 
       if (!id) {
+        category_id = selectedCategory;
+
+        const data = { name, description, link, category_id };
+
         await api.post("/document", data);
       }
 

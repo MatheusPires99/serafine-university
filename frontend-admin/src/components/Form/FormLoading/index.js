@@ -9,7 +9,7 @@ export default function SkeletonLoading() {
       <div>
         <Skeleton width={200} />
         <Skeleton height={45} count={4} />
-        <Skeleton height={200} />
+        <Skeleton height={150} />
       </div>
     </Container>
   );

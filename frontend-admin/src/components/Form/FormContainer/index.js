@@ -50,7 +50,7 @@ export const FormContainer = styled(Form)`
   }
 
   textarea {
-    height: 100%;
+    height: 150px;
     padding: 15px;
     font-weight: ${props => (props.bold ? "bold" : "normal")};
   }
