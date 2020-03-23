@@ -10,8 +10,7 @@ import history from "~/services/history";
 
 import { HeaderForm } from "~/components/ActionHeader";
 import EditContainer from "~/components/EditContainer";
-import { FormContainer, Select } from "~/components/Form";
-import SkeletonLoading from "~/components/SkeletonLoading";
+import { FormContainer, FormLoading, Select } from "~/components/Form";
 
 // import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
 
@@ -121,7 +120,7 @@ export default function DocumentForm({ match }) {
 
       <EditContainer>
         {loading ? (
-          <SkeletonLoading />
+          <FormLoading />
         ) : (
           <>
             <FormContainer

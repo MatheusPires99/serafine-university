@@ -8,8 +8,7 @@ import api from "~/services/api";
 import history from "~/services/history";
 
 import { HeaderForm } from "~/components/ActionHeader";
-import { FormContainer, Select } from "~/components/Form";
-import SkeletonLoading from "~/components/SkeletonLoading";
+import { FormContainer, FormLoading, Select } from "~/components/Form";
 
 const schemaNew = Yup.object().shape({
   name: Yup.string().required("O nome é obrigatório"),
@@ -122,7 +121,7 @@ export default function UserForm({ match }) {
       />
 
       {loading ? (
-        <SkeletonLoading />
+        <FormLoading />
       ) : (
         <>
           <FormContainer

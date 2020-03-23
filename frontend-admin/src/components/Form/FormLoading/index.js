@@ -6,12 +6,10 @@ import { Container } from "./styles";
 export default function SkeletonLoading() {
   return (
     <Container>
-      <div style={{ fontSize: 20, lineHeight: 2.5 }}>
-        <Skeleton />
-        <Skeleton height={44} />
-        <Skeleton height={44} />
-        <Skeleton height={44} />
-        <Skeleton height={250} />
+      <div>
+        <Skeleton width={200} />
+        <Skeleton height={45} count={4} />
+        <Skeleton height={200} />
       </div>
     </Container>
   );

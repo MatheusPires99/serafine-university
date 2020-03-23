@@ -10,8 +10,7 @@ import history from "~/services/history";
 import { TableContainer, TableActions } from "~/components/Table";
 import { HeaderForm } from "~/components/ActionHeader";
 import EditContainer from "~/components/EditContainer";
-import { FormContainer } from "~/components/Form";
-import SkeletonLoading from "~/components/SkeletonLoading";
+import { FormContainer, FormLoading } from "~/components/Form";
 
 import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
 
@@ -89,7 +88,7 @@ export default function CategoryForm({ match }) {
 
       <EditContainer>
         {loading ? (
-          <SkeletonLoading />
+          <FormLoading />
         ) : (
           <>
             <FormContainer
