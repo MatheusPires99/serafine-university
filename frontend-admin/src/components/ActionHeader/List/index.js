@@ -30,11 +30,7 @@ export default function HeaderList({ title, route, q, setQ }) {
 
 HeaderList.propTypes = {
   title: PropTypes.string.isRequired,
-  route: PropTypes.string,
+  route: PropTypes.string.isRequired,
   q: PropTypes.string.isRequired,
-  setQ: PropTypes.string.isRequired
-};
-
-HeaderList.defaultProps = {
-  route: null
+  setQ: PropTypes.func.isRequired
 };

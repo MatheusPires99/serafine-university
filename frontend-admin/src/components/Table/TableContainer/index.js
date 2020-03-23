@@ -14,19 +14,23 @@ export const TableContainer = styled.table`
     background: #f9f9f9;
   }
 
-  tbody td {
-    padding: 8px 12px;
+  tbody {
+    font-size: 16px;
 
-    &:last-child {
-      display: flex;
-      justify-content: flex-end;
+    td {
+      padding: 8px 12px;
+
+      &:last-child {
+        display: flex;
+        justify-content: flex-end;
+      }
     }
-  }
 
-  .description-cell {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    .description-cell {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 `;
 

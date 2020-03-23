@@ -44,7 +44,7 @@ export const SearchBar = styled.div`
   svg {
     position: absolute;
     left: 10px;
-    top: 6px;
+    top: 8px;
   }
 
   input {

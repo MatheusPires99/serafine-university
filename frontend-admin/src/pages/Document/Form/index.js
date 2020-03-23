@@ -56,9 +56,9 @@ export default function DocumentForm({ match }) {
       try {
         const response = await api.get("category");
 
-        setCategories(response.data);
+        setCategories(response.data.docs);
       } catch (err) {
-        toast.error("Falha ao carregar dados");
+        toast.error("Falha ao carregar os dados das categorias");
       }
     }
 
@@ -88,6 +88,8 @@ export default function DocumentForm({ match }) {
         category_id = selectedCategory.id;
 
         const data = { name, description, link, category_id };
+
+        console.tron.log(data);
 
         await api.put(`/document/${id}`, data);
       }
