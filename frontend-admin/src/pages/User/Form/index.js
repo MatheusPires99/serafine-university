@@ -83,22 +83,23 @@ export default function UserForm({ match }) {
     try {
       setButtonLoading(true);
 
-      const dataNew = { name, email, password, confirmPassword, admin };
-      const dataEdit = {
-        name,
-        email,
-        oldPassword,
-        password,
-        confirmPassword,
-        admin
-      };
-
       if (id) {
-        await api.put(`/user/${id}`, dataEdit);
+        const data = {
+          name,
+          email,
+          oldPassword,
+          password,
+          confirmPassword,
+          admin
+        };
+
+        await api.put(`/user/${id}`, data);
       }
 
       if (!id) {
-        await api.post("/user", dataNew);
+        const data = { name, email, password, confirmPassword, admin };
+
+        await api.post("/user", data);
       }
 
       setButtonLoading(false);

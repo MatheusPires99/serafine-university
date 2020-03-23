@@ -21,14 +21,14 @@ export default function SelectComponent({
       height: 45,
       width: "100%",
       padding: "0 7px",
-      color: "#666"
+      color: "#272727"
     }),
     option: (provided, state) => ({
       ...provided,
       color: state.isSelected ? "#fff" : "#666"
     }),
     singleValue: provided => {
-      const color = "#666";
+      const color = "#272727";
 
       return { ...provided, color };
     }

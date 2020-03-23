@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import { signOut } from "~/store/modules/auth/actions";
 
@@ -18,8 +19,9 @@ import {
 } from "./styles";
 
 export default function Header() {
-  const [documents, setDocuments] = useState("");
   const [categories, setCategories] = useState("");
+  const [documents, setDocuments] = useState("");
+  const [users, setUsers] = useState("");
 
   const dispatch = useDispatch();
 
@@ -28,23 +30,27 @@ export default function Header() {
   }
 
   useEffect(() => {
-    async function loadCategories() {
-      const response = await api.get("category");
+    async function loadDetails() {
+      try {
+        const [
+          categoryResponse,
+          documentResponse,
+          userResponse
+        ] = await Promise.all([
+          api.get("category"),
+          api.get("document"),
+          api.get("user")
+        ]);
 
-      setCategories(response.data);
+        setCategories(categoryResponse.data.docs);
+        setDocuments(documentResponse.data.docs);
+        setUsers(userResponse.data.docs);
+      } catch (err) {
+        toast.error("Falha ao carregar dados");
+      }
     }
 
-    loadCategories();
-  }, []);
-
-  useEffect(() => {
-    async function loadDocuments() {
-      const response = await api.get("document");
-
-      setDocuments(response.data);
-    }
-
-    loadDocuments();
+    loadDetails();
   }, []);
 
   return (
@@ -64,6 +70,10 @@ export default function Header() {
           <div>
             <span>Documentos</span>
             <strong>{documents.length}</strong>
+          </div>
+          <div>
+            <span>Usuários</span>
+            <strong>{users.length}</strong>
           </div>
         </DashboardInfo>
         <Profile>

@@ -67,7 +67,7 @@ export default function DocumentForm({ match }) {
 
   const categoryOptions = categories.map(category => {
     const data = {
-      value: category.id,
+      value: category,
       label: category.name
     };
 
@@ -86,6 +86,8 @@ export default function DocumentForm({ match }) {
 
       if (id) {
         category_id = selectedCategory.id;
+
+        console.tron.log(category_id);
 
         const data = { name, description, link, category_id };
 
