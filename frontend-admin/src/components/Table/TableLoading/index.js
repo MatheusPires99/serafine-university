@@ -5,8 +5,8 @@ import Skeleton from "react-loading-skeleton";
 export default function TableLoading() {
   return (
     <div style={{ lineHeight: 3 }}>
-      <Skeleton height={60} />
-      <Skeleton height={30} count={10} />
+      <Skeleton height={35} />
+      <Skeleton height={50} count={8} />
     </div>
   );
 }
