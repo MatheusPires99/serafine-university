@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
+export const EditContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const DocumentsList = styled.div`
   width: 100%;
   height: 100%;

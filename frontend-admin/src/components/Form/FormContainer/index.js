@@ -46,7 +46,7 @@ export const FormContainer = styled(Form)`
   }
 
   input {
-    height: 44px;
+    height: 45px;
   }
 
   textarea {

@@ -9,7 +9,6 @@ import api from "~/services/api";
 import history from "~/services/history";
 
 import { HeaderForm } from "~/components/ActionHeader";
-import EditContainer from "~/components/EditContainer";
 import { FormContainer, FormLoading, Select } from "~/components/Form";
 
 // import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
@@ -118,49 +117,47 @@ export default function DocumentForm({ match }) {
         buttonLoading={buttonLoading}
       />
 
-      <EditContainer>
-        {loading ? (
-          <FormLoading />
-        ) : (
-          <>
-            <FormContainer
-              id="submit"
-              initialData={documents}
-              schema={schema}
-              onSubmit={handleSubmit}
-            >
-              <p>Complete todos os campos a baixo:</p>
+      {loading ? (
+        <FormLoading />
+      ) : (
+        <>
+          <FormContainer
+            id="submit"
+            initialData={documents}
+            schema={schema}
+            onSubmit={handleSubmit}
+          >
+            <p>Complete todos os campos a baixo:</p>
 
-              <label htmlFor="name">Nome</label>
-              <Input name="name" type="text" />
+            <label htmlFor="name">Nome</label>
+            <Input name="name" type="text" />
 
-              <label htmlFor="link">Link</label>
-              <Input name="link" type="text" />
+            <label htmlFor="link">Link</label>
+            <Input name="link" type="text" />
 
-              <label htmlFor="description">Descrição</label>
-              <Input
-                multiline
-                name="description"
-                id="description"
-                cols="30"
-                rows="10"
-              />
+            <label htmlFor="description">Descrição</label>
+            <Input
+              multiline
+              name="description"
+              id="description"
+              cols="30"
+              rows="10"
+            />
 
-              <Select
-                name="category.name"
-                label="Selecione qual categoria esse documento pertencerá"
-                placeholder="Selecione uma opção"
-                options={categoryOptions}
-                defaultValue={{
-                  value: selectedCategory.id,
-                  label: selectedCategory.name
-                }}
-                onChange={handleChangeCategory}
-              />
-            </FormContainer>
-          </>
-        )}
-      </EditContainer>
+            <Select
+              name="category.name"
+              label="Selecione qual categoria esse documento pertencerá"
+              placeholder="Selecione uma opção"
+              options={categoryOptions}
+              defaultValue={{
+                value: selectedCategory.id,
+                label: selectedCategory.name
+              }}
+              onChange={handleChangeCategory}
+            />
+          </FormContainer>
+        </>
+      )}
     </>
   );
 }

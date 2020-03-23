@@ -9,10 +9,14 @@ import history from "~/services/history";
 
 import { TableContainer, TableActions } from "~/components/Table";
 import { HeaderForm } from "~/components/ActionHeader";
-import EditContainer from "~/components/EditContainer";
 import { FormContainer, FormLoading } from "~/components/Form";
 
-import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
+import {
+  EditContainer,
+  DocumentsList,
+  DocumentsListHeader,
+  Scroll
+} from "./styles";
 
 const schema = Yup.object().shape({
   name: Yup.string().required("O nome da categoria é obrigatório"),
