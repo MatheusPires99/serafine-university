@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import sequelizePaginate from "sequelize-paginate";
 
 class Category extends Model {
   static init(sequelize) {
@@ -13,6 +14,7 @@ class Category extends Model {
       }
     );
 
+    sequelizePaginate.paginate(Category);
     return this;
   }
 

@@ -8,19 +8,19 @@ class UserController {
     const { page = 1, q = "" } = req.query;
     const name = q || "";
 
-    const users = await User.findAll({
+    const { docs, pages, total } = await User.paginate({
       where: { name: { [Op.iLike]: `%${name}%` } },
       attributes: ["id", "name", "email", "admin"],
       order: [["created_at", "DESC"]],
-      limit: 20,
-      offset: (page - 1) * 20,
+      paginate: 10,
+      page,
     });
 
-    if (!users) {
+    if (!docs) {
       return res.status(401).json({ error: "Users not found" });
     }
 
-    return res.json(users);
+    return res.json({ docs, page, pages, total });
   }
 
   async show(req, res) {

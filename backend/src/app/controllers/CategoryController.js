@@ -8,18 +8,23 @@ class CategoryController {
     const { page = 1, q } = req.query;
     const name = q || "";
 
-    const category = await Category.findAll({
+    const { docs, pages, total } = await Category.paginate({
       where: { status: true, name: { [Op.iLike]: `%${name}%` } },
       attributes: ["id", "name", "description", "status"],
       order: [
         ["status", "DESC"],
         ["id", "DESC"],
       ],
-      limit: 20,
-      offset: (page - 1) * 20,
+      paginate: 10,
+      page,
     });
 
-    return res.json(category);
+    return res.json({
+      docs,
+      page,
+      pages,
+      total,
+    });
   }
 
   async show(req, res) {

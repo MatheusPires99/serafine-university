@@ -13,15 +13,15 @@ class DocumentController {
     const { page = 1, q = "" } = req.query;
     const name = q || "";
 
-    const documents = await Document.findAll({
+    const { docs, pages, total } = await Document.paginate({
       where: { status: true, name: { [Op.iLike]: `%${name}%` } },
       attributes: ["id", "name", "description", "link", "status"],
       order: [
         ["status", "DESC"],
         ["id", "DESC"],
       ],
-      limit: 10,
-      offset: (page - 1) * 10,
+      paginate: 10,
+      page,
       include: {
         model: Category,
         as: "category",
@@ -29,7 +29,7 @@ class DocumentController {
       },
     });
 
-    return res.json(documents);
+    return res.json({ docs, page, pages, total });
   }
 
   async show(req, res) {

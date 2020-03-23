@@ -1,5 +1,6 @@
 import Sequelize, { Model } from "sequelize";
 import bcrypt from "bcryptjs";
+import sequelizePaginate from "sequelize-paginate";
 
 class User extends Model {
   static init(sequelize) {
@@ -22,6 +23,7 @@ class User extends Model {
       }
     });
 
+    sequelizePaginate.paginate(User);
     return this;
   }
 
