@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import api from "~/services/api";
 
 import { TableContainer, TableActions, TableLoading } from "~/components/Table";
-import { Header } from "~/components/Dashboard";
+import { HeaderList } from "~/components/ActionHeader";
 
 export default function DocumentList() {
   const [documents, setDocuments] = useState([]);
@@ -34,7 +34,7 @@ export default function DocumentList() {
 
   return (
     <>
-      <Header title="Documentos" route="document" q={q} setQ={setQ} />
+      <HeaderList title="Documentos" route="document" q={q} setQ={setQ} />
 
       {loading ? (
         <TableLoading />

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import api from "~/services/api";
 
 import { TableContainer, TableActions, TableLoading } from "~/components/Table";
-import { Header } from "~/components/Dashboard";
+import { HeaderList } from "~/components/ActionHeader";
 
 import { UserCell } from "./styles";
 
@@ -35,7 +35,7 @@ export default function UserList() {
 
   return (
     <>
-      <Header title="Usuários" route="user" q={q} setQ={setQ} />
+      <HeaderList title="Usuários" route="user" q={q} setQ={setQ} />
 
       {loading ? (
         <TableLoading />

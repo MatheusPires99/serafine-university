@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import api from "~/services/api";
 
 import { TableContainer, TableActions, TableLoading } from "~/components/Table";
-import { Header } from "~/components/Dashboard";
+import { HeaderList } from "~/components/ActionHeader";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -33,7 +33,7 @@ export default function CategoryList() {
 
   return (
     <>
-      <Header title="Categorias" route="category" q={q} setQ={setQ} />
+      <HeaderList title="Categorias" route="category" q={q} setQ={setQ} />
 
       {loading ? (
         <TableLoading />

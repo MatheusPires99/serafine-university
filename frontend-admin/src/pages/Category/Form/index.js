@@ -8,9 +8,9 @@ import api from "~/services/api";
 import history from "~/services/history";
 
 import { TableContainer, TableActions } from "~/components/Table";
-import { HeaderForm } from "~/components/Dashboard";
+import { HeaderForm } from "~/components/ActionHeader";
 import EditContainer from "~/components/EditContainer";
-import FormContainer from "~/components/FormContainer";
+import { FormContainer } from "~/components/Form";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";

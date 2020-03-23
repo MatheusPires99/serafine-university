@@ -7,11 +7,9 @@ import * as Yup from "yup";
 import api from "~/services/api";
 import history from "~/services/history";
 
-import { HeaderForm } from "~/components/Dashboard";
-import FormContainer from "~/components/FormContainer";
+import { HeaderForm } from "~/components/ActionHeader";
+import { FormContainer, Select } from "~/components/Form";
 import SkeletonLoading from "~/components/SkeletonLoading";
-
-import { ReactSelect } from "./styles";
 
 const schemaNew = Yup.object().shape({
   name: Yup.string().required("O nome é obrigatório"),
@@ -158,44 +156,29 @@ export default function UserForm({ match }) {
             </label>
             <Input name="confirmPassword" type="password" />
 
-            <label htmlFor="admin">Selecione o tipo do usuário</label>
             {users.admin ? (
-              <ReactSelect
+              <Select
                 name="admin"
+                label="Selecione o tipo do usuário"
                 placeholder="Selecione uma opção"
                 onChange={handleChangeAdmin}
                 options={userType}
-                isSearchable={false}
                 defaultValue={{
                   value: true,
                   label: "Administrador"
                 }}
-                theme={theme => ({
-                  ...theme,
-                  colors: {
-                    ...theme.colors,
-                    primary: "#ffc72c"
-                  }
-                })}
               />
             ) : (
-              <ReactSelect
+              <Select
                 name="admin"
+                label="Selecione o tipo do usuário"
                 placeholder="Selecione uma opção..."
                 onChange={handleChangeAdmin}
                 options={userType}
-                isSearchable={false}
                 defaultValue={{
                   value: false,
                   label: "Franqueado"
                 }}
-                theme={theme => ({
-                  ...theme,
-                  colors: {
-                    ...theme.colors,
-                    primary: "#ffc72c"
-                  }
-                })}
               />
             )}
           </FormContainer>

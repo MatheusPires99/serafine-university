@@ -8,10 +8,9 @@ import * as Yup from "yup";
 import api from "~/services/api";
 import history from "~/services/history";
 
-import { HeaderForm } from "~/components/Dashboard";
+import { HeaderForm } from "~/components/ActionHeader";
 import EditContainer from "~/components/EditContainer";
-import FormContainer from "~/components/FormContainer";
-import AsyncReactSelect from "~/components/AsyncReactSelect";
+import { FormContainer, Select } from "~/components/Form";
 import SkeletonLoading from "~/components/SkeletonLoading";
 
 // import { DocumentsList, DocumentsListHeader, Scroll } from "./styles";
@@ -30,6 +29,7 @@ export default function DocumentForm({ match }) {
     description: null,
     link: null
   });
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState({});
   const [loading, setLoading] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -43,6 +43,7 @@ export default function DocumentForm({ match }) {
           const response = await api.get(`/document/${id}`);
 
           setDocuments(response.data);
+          setSelectedCategory(response.data.category);
 
           setLoading(false);
         } catch (err) {
@@ -54,11 +55,40 @@ export default function DocumentForm({ match }) {
     }
   }, [id]);
 
+  useEffect(() => {
+    async function loadSelectOptions() {
+      try {
+        const response = await api.get("category");
+
+        setCategories(response.data);
+      } catch (err) {
+        toast.error("Falha ao carregar dados");
+      }
+    }
+
+    loadSelectOptions();
+  }, []);
+
+  const categoryOptions = categories.map(category => {
+    const data = {
+      value: category.id,
+      label: category.name
+    };
+
+    return data;
+  });
+
+  const handleChangeCategory = selectedOption => {
+    const { value } = selectedOption;
+
+    setSelectedCategory(value);
+  };
+
   async function handleSubmit({ name, description, link, category_id }) {
     try {
       setButtonLoading(true);
 
-      category_id = selectedCategory;
+      category_id = selectedCategory.id;
 
       const data = { name, description, link, category_id };
 
@@ -117,14 +147,16 @@ export default function DocumentForm({ match }) {
                 rows="10"
               />
 
-              <label htmlFor="category_id">
-                Selecione qual categoria esse documento pertencerá
-              </label>
-              <AsyncReactSelect
-                name="category_id"
-                placeholder="Selecione uma opção..."
-                noOptionsMessage={() => "Nenhuma categoria encontrada"}
-                setSelectedCategory={setSelectedCategory}
+              <Select
+                name="category.name"
+                label="Selecione qual categoria esse documento pertencerá"
+                placeholder="Selecione uma opção"
+                options={categoryOptions}
+                defaultValue={{
+                  value: selectedCategory.id,
+                  label: selectedCategory.name
+                }}
+                onChange={handleChangeCategory}
               />
             </FormContainer>
           </>

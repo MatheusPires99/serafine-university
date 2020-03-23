@@ -5,7 +5,7 @@ import { MdSearch, MdAdd } from "react-icons/md";
 
 import { Container, SearchBar } from "./styles";
 
-export default function Header({ title, route, q, setQ }) {
+export default function HeaderList({ title, route, q, setQ }) {
   return (
     <Container>
       <h1>{title}</h1>
@@ -28,13 +28,13 @@ export default function Header({ title, route, q, setQ }) {
   );
 }
 
-Header.propTypes = {
+HeaderList.propTypes = {
   title: PropTypes.string.isRequired,
   route: PropTypes.string,
   q: PropTypes.string.isRequired,
   setQ: PropTypes.string.isRequired
 };
 
-Header.defaultProps = {
+HeaderList.defaultProps = {
   route: null
 };
