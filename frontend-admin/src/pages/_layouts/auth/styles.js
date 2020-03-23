@@ -38,7 +38,7 @@ export const Content = styled.div`
       position: relative;
 
       input {
-        border-color: #ddd;
+        border-color: #ccc;
         padding: 0 15px 0 40px;
         margin-bottom: 10px;
       }

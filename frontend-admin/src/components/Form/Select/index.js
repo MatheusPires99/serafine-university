@@ -16,7 +16,7 @@ export default function SelectComponent({
   const customStyles = {
     control: () => ({
       display: "flex",
-      border: "1px solid #ccc",
+      border: "1px solid #ddd",
       borderRadius: 4,
       height: 45,
       width: "100%",
