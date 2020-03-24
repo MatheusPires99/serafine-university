@@ -13,6 +13,7 @@ export const Documentations = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: ${props => (props.sideFixed ? "210px" : "0px")};
+  width: 100%;
 `;
 
 export const Introduction = styled.div`
@@ -58,6 +59,10 @@ export const DocumentsList = styled.div`
 `;
 
 export const DocumentsItem = styled.div`
+  & + div {
+    margin-top: 30px;
+  }
+
   h1 {
     font-size: 24px;
     margin-bottom: 15px;

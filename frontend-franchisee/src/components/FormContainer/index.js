@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Form } from "@rocketseat/unform";
+import { darken } from "polished";
 
 export const FormContainer = styled(Form)`
   display: flex;
@@ -17,25 +18,21 @@ export const FormContainer = styled(Form)`
     align-self: flex-start;
   }
 
-  input,
-  textarea {
+  input {
     width: 100%;
+    height: 45px;
     border-radius: 4px;
-    border: 2px solid #eee;
+    border: 1px solid #ccc;
     padding: 0 15px;
     margin-bottom: 20px;
     transition: border-color 0.2s;
 
     &::placeholder {
-      color: #999;
+      color: #bbb;
     }
 
     &:focus {
       border-color: #ffc72c;
-    }
-
-    &:focus ~ svg {
-      color: #ffc72c;
     }
   }
 
@@ -45,14 +42,15 @@ export const FormContainer = styled(Form)`
     margin-bottom: 15px;
   }
 
-  input {
-    height: 44px;
-  }
+  button {
+    background: #ffc72c;
+    color: #fff;
+    border: 0;
+    margin-bottom: 15px;
 
-  textarea {
-    height: 100%;
-    padding: 15px;
-    font-weight: ${props => (props.bold ? "bold" : "normal")};
+    &:hover {
+      background: ${darken(0.05, "#ffc72c")};
+    }
   }
 `;
 

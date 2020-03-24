@@ -30,9 +30,6 @@ export const Content = styled.div`
   }
 
   form {
-    display: flex;
-    flex-direction: column;
-
     div {
       display: flex;
       flex-direction: column;
@@ -40,25 +37,13 @@ export const Content = styled.div`
       position: relative;
 
       input {
-        width: 100%;
-        border: 2px solid #ddd;
-        border-radius: 4px;
         padding: 0 15px 0 40px;
-        height: 44px;
         font-size: 14px;
         margin-bottom: 15px;
         transition: border-color 0.2s;
 
-        &::placeholder {
-          color: #bbb;
-        }
-
         & + input {
           margin-top: 10px;
-        }
-
-        &:focus {
-          border-color: #ffc72c;
         }
 
         &:focus ~ svg {
@@ -84,9 +69,8 @@ export const Content = styled.div`
 
     button {
       background: #ffc72c;
-      color: #fff;
       border: 0;
-      margin-bottom: 15px;
+      color: #fff;
 
       &:hover {
         background: ${darken(0.05, "#ffc72c")};
@@ -104,7 +88,7 @@ export const Content = styled.div`
     transition: color, background 0.2s;
 
     &:hover {
-      background: ${darken(0.05, "#e74c3c")};
+      background: #e74c3c;
       color: #fff;
     }
   }

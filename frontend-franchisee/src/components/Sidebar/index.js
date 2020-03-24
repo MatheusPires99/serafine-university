@@ -5,7 +5,7 @@ import api from "~/services/api";
 
 import { SkeletonSideBar } from "~/components/Skeleton";
 
-import { Container } from "./styles";
+import { Container, CategoryList } from "./styles";
 
 export default function Sidebar() {
   const [fixed, setFixed] = useState(false);
@@ -15,12 +15,14 @@ export default function Sidebar() {
   useEffect(() => {
     async function loadCategories() {
       try {
-        const response = await api.get("category");
-
         setLoading(true);
 
-        setCategories(response.data);
+        const response = await api.get("category");
+
+        setLoading(false);
+        setCategories(response.data.docs);
       } catch (err) {
+        setLoading(false);
         toast.error("Não foi possível carregar as informações das categorias");
       }
     }
@@ -42,17 +44,15 @@ export default function Sidebar() {
 
   return (
     <Container fixed={fixed}>
-      <ul>
-        {loading ? (
-          <SkeletonSideBar />
-        ) : (
-          <>
-            {categories.map(category => (
-              <li key={category.id}>{category.name}</li>
-            ))}
-          </>
-        )}
-      </ul>
+      {loading ? (
+        <SkeletonSideBar />
+      ) : (
+        <CategoryList>
+          {categories.map(category => (
+            <div key={category.id}>{category.name}</div>
+          ))}
+        </CategoryList>
+      )}
     </Container>
   );
 }
