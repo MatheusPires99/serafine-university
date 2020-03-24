@@ -3,8 +3,6 @@ import Document from "../models/Document";
 
 class DocumentationController {
   async index(req, res) {
-    const { documentPage = 1 } = req.query;
-
     const category = await Category.findAll({
       where: { status: true },
       attributes: ["id", "name", "description", "status"],
@@ -15,9 +13,6 @@ class DocumentationController {
           as: "documents",
           where: { status: true },
           attributes: ["id", "name", "description", "link", "status"],
-          limit: 5,
-          offset: (documentPage - 1) * 5,
-          // order: [["documents", "id", "DESC"]],
         },
       ],
     });
@@ -26,8 +21,6 @@ class DocumentationController {
   }
 
   async show(req, res) {
-    const { documentPage = 1 } = req.query;
-
     const category = await Category.findByPk(req.params.id, {
       where: { status: true },
       attributes: ["id", "name", "description", "status"],
@@ -37,10 +30,9 @@ class DocumentationController {
           as: "documents",
           where: { status: true },
           attributes: ["id", "name", "description", "link", "status"],
-          limit: 5,
-          offset: (documentPage - 1) * 5,
         },
       ],
+      order: [[{ model: Document, as: "documents" }, "id", "DESC"]],
     });
 
     return res.json(category);
