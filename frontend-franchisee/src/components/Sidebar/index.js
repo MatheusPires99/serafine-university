@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { NavLink } from "react-router-dom";
 
 import api from "~/services/api";
 
@@ -49,7 +50,13 @@ export default function Sidebar() {
       ) : (
         <CategoryList>
           {categories.map(category => (
-            <div key={category.id}>{category.name}</div>
+            <NavLink
+              to={`/${category.id}`}
+              activeClassName="selected"
+              key={category.id}
+            >
+              {category.name}
+            </NavLink>
           ))}
         </CategoryList>
       )}

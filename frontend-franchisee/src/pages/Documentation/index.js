@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { MdChevronRight } from "react-icons/md";
 import { FaFileDownload } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -17,7 +18,9 @@ import {
   DocumentsItem
 } from "./styles";
 
-export default function Documentation() {
+export default function Documentation({ match }) {
+  const { id } = match.params;
+
   const [sideFixed, setSideFixed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState({});
@@ -28,7 +31,7 @@ export default function Documentation() {
       try {
         setLoading(true);
 
-        const response = await api.get("documentation/33");
+        const response = await api.get(`documentation/33`);
 
         setCategory(response.data);
         setDocuments(response.data.documents);
@@ -41,7 +44,7 @@ export default function Documentation() {
     }
 
     loadDocumentation();
-  }, []);
+  }, [id]);
 
   function listenScrollEvent() {
     if (window.scrollY > 350) {
@@ -81,7 +84,11 @@ export default function Documentation() {
                 <DocumentsItem key={document.id}>
                   <h1>{document.name}</h1>
                   <p>{document.description}</p>
-                  <a href={document.link}>
+                  <a
+                    href={document.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaFileDownload color="#fff" size={18} />
                     Faça download
                   </a>
@@ -94,3 +101,11 @@ export default function Documentation() {
     </>
   );
 }
+
+Documentation.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.node
+    }).isRequired
+  }).isRequired
+};

@@ -8,16 +8,24 @@ export const Container = styled.aside`
 `;
 
 export const CategoryList = styled.div`
-  div {
+  display: flex;
+  flex-direction: column;
+
+  a {
     cursor: pointer;
     width: fit-content;
     padding: 10px 20px 10px 0px;
+    font-size: 18px;
     white-space: nowrap;
     color: rgba(39, 39, 39, 0.8);
     transition: font-weight 0.2s;
 
     &:hover {
       color: #272727;
+      font-weight: bold;
+    }
+
+    &.selected {
       font-weight: bold;
     }
   }
