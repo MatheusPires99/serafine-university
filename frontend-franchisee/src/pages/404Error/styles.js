@@ -4,6 +4,10 @@ import { darken } from "polished";
 export const Container = styled.div`
   h1 {
     font-size: 82px;
+
+    @media (max-width: 768px) {
+      font-size: 60px;
+    }
   }
 
   span {

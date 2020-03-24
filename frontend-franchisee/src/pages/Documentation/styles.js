@@ -7,6 +7,10 @@ export const Content = styled.div`
   margin-bottom: 120px;
   position: relative;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Documentations = styled.div`
@@ -14,6 +18,11 @@ export const Documentations = styled.div`
   flex-direction: column;
   padding-left: ${props => (props.sideFixed ? "210px" : "0px")};
   width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin-top: 30px;
+  }
 `;
 
 export const Introduction = styled.div`

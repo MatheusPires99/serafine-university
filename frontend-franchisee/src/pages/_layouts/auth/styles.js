@@ -16,9 +16,18 @@ export const Content = styled.div`
   margin: 0 auto;
   text-align: center;
 
+  @media (max-width: 768px) {
+    max-width: 370px;
+    padding: 0 20px;
+  }
+
   .signIn-logo {
     width: 100px;
     background: #fff;
+
+    @media (max-width: 768px) {
+      width: 75px;
+    }
   }
 
   > div {
@@ -26,11 +35,20 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 400px;
+    width: 100%;
     padding: 45px 30px;
+
+    @media (max-width: 768px) {
+      padding: 30px 20px;
+    }
 
     img {
       width: 200px;
+      margin-bottom: 10px;
+
+      @media (max-width: 768px) {
+        width: 150px;
+      }
     }
 
     form {

@@ -12,6 +12,11 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 768px) {
+    height: 60px;
+    padding: 0 20px;
+  }
+
   img {
     width: 140px;
   }
