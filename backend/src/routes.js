@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import UserController from "./app/controllers/UserController";
+import FranchiseeUserController from "./app/controllers/FranchiseeUserController";
 import SessionController from "./app/controllers/SessionController";
 import CategoryController from "./app/controllers/CategoryController";
 import DocumentController from "./app/controllers/DocumentController";
@@ -17,7 +18,7 @@ routes.post("/sessions", SessionController.store);
 
 routes.use(authMiddlware);
 
-routes.put("/user/:id", UserController.update);
+routes.put("/franchisee_user", FranchiseeUserController.update);
 
 routes.get("/category", CategoryController.index);
 routes.get("/category/:id", CategoryController.show);
@@ -30,6 +31,7 @@ routes.use(authAdminMiddleware);
 routes.get("/user", UserController.index);
 routes.get("/user/:id", UserController.show);
 routes.post("/user", UserController.store);
+routes.put("/user/:id", UserController.update);
 routes.delete("/user/:id", UserController.delete);
 
 routes.post("/category", CategoryController.store);
