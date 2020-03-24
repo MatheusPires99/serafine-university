@@ -25,7 +25,7 @@ export const FormContainer = styled(Form)`
     border: 1px solid #ccc;
     padding: 0 15px;
     margin-bottom: 20px;
-    transition: border-color 0.2s;
+    transition: box-shadow 0.1s, border-color 0.1s;
 
     &::placeholder {
       color: #bbb;
@@ -33,6 +33,7 @@ export const FormContainer = styled(Form)`
 
     &:focus {
       border-color: #ffc72c;
+      box-shadow: 0 0 0 1px #ffc72c;
     }
   }
 

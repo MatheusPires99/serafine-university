@@ -7,11 +7,12 @@ import * as Yup from "yup";
 
 import { signInRequest } from "~/store/modules/auth/actions";
 
-import logo from "~/assets/logo.svg";
-import serafineLogin from "~/assets/serafineLogin.jpg";
+import logo from "~/assets/gold-feather.png";
 
 import FormContainer from "~/components/FormContainer";
 import Spinner from "~/components/Spinner";
+
+import { Content } from "./styles";
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -30,9 +31,10 @@ export default function SignIn() {
 
   return (
     <>
-      <img src={serafineLogin} alt="Serafine Campaign" />
-      <div>
-        <img src={logo} alt="Universidade Serafine" />
+      <img className="signIn-logo" src={logo} alt="Universidade Serafine" />
+
+      <Content>
+        <h1>Acessar Universidade Serafine</h1>
 
         <FormContainer schema={schema} onSubmit={handleSubmit}>
           <div>
@@ -43,10 +45,12 @@ export default function SignIn() {
             <Input name="password" type="password" placeholder="Senha" />
             <FaLock size={14} />
           </div>
+
           <Link to="/">Esqueci minha senha</Link>
+
           <button type="submit">{loading ? <Spinner /> : "Entrar"}</button>
         </FormContainer>
-      </div>
+      </Content>
     </>
   );
 }

@@ -7,19 +7,18 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  background: ${darken(0.005, "#fff")};
 `;
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 1000px;
+  max-width: 400px;
   margin: 0 auto;
   text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  display: flex;
 
-  img {
-    width: 500px;
+  .signIn-logo {
+    width: 100px;
+    background: #fff;
   }
 
   > div {
@@ -27,8 +26,8 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 500px;
-    padding: 0 80px;
+    width: 400px;
+    padding: 45px 30px;
 
     img {
       width: 200px;
@@ -105,6 +104,6 @@ export const Content = styled.div`
 export const SerafineRights = styled.span`
   position: absolute;
   bottom: 36px;
-  color: #666;
+  color: #999;
   font-size: 10px;
 `;
