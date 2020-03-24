@@ -7,7 +7,7 @@ import * as Yup from "yup";
 
 import { signInRequest } from "~/store/modules/auth/actions";
 
-import logo from "~/assets/logo.png";
+import logo from "~/assets/logo.svg";
 import serafineLogin from "~/assets/serafineLogin.jpg";
 
 import FormContainer from "~/components/FormContainer";
