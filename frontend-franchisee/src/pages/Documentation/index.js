@@ -31,7 +31,7 @@ export default function Documentation({ match }) {
       try {
         setLoading(true);
 
-        const response = await api.get(`documentation/33`);
+        const response = await api.get(`documentation/${id}`);
 
         setCategory(response.data);
         setDocuments(response.data.documents);

@@ -51,7 +51,7 @@ export default function Sidebar() {
         <CategoryList>
           {categories.map(category => (
             <NavLink
-              to={`/${category.id}`}
+              to={`/doc/${category.id}`}
               activeClassName="selected"
               key={category.id}
             >
