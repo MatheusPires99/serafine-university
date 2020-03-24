@@ -87,17 +87,13 @@ export default function DocumentForm({ match }) {
       if (id) {
         category_id = selectedCategory.id;
 
-        console.tron.log(category_id);
-
         const data = { name, description, link, category_id };
-
-        console.tron.log(data);
 
         await api.put(`/document/${id}`, data);
       }
 
       if (!id) {
-        category_id = selectedCategory;
+        category_id = selectedCategory.id;
 
         const data = { name, description, link, category_id };
 

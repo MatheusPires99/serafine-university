@@ -55,7 +55,7 @@ export const SearchBar = styled.div`
     margin-right: 10px;
 
     &:focus {
-      border-color: #bbb;
+      box-shadow: 0 0 0 1px #ddd;
     }
 
     &::placeholder {
