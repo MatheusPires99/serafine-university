@@ -2,7 +2,8 @@ import { Router } from "express";
 
 import UserController from "./app/controllers/UserController";
 import FranchiseeUserController from "./app/controllers/FranchiseeUserController";
-import SessionController from "./app/controllers/SessionController";
+import SessionController from "./app/controllers/auth/SessionController";
+import ForgotPasswordController from "./app/controllers/auth/ForgotPasswordController";
 import CategoryController from "./app/controllers/CategoryController";
 import DocumentController from "./app/controllers/DocumentController";
 import DocumentationController from "./app/controllers/DocumentationController";
@@ -15,6 +16,7 @@ import authAdminMiddleware from "./app/middlewares/adminAuth";
 const routes = new Router();
 
 routes.post("/sessions", SessionController.store);
+routes.post("/forgot_password", ForgotPasswordController.store);
 
 routes.use(authMiddlware);
 
