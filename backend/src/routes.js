@@ -26,6 +26,9 @@ routes.get("/category/:id", CategoryController.show);
 routes.get("/document", DocumentController.index);
 routes.get("/document/:id", DocumentController.show);
 
+routes.get("/documentation", DocumentationController.index);
+routes.get("/documentation/:id", DocumentationController.show);
+
 routes.use(authAdminMiddleware);
 
 routes.get("/user", UserController.index);
@@ -41,9 +44,6 @@ routes.delete("/category/:id", CategoryController.delete);
 routes.post("/document", DocumentController.store);
 routes.put("/document/:id", DocumentController.update);
 routes.delete("/document/:id", DocumentController.delete);
-
-routes.get("/documentation", DocumentationController.index);
-routes.get("/documentation/:id", DocumentationController.show);
 
 routes.delete(
   "/category/:id/disable-document/:document_id",
