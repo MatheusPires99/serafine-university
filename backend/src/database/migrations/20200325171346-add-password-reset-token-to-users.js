@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn("users", "passwordResetToken", {
+    return queryInterface.addColumn("users", "password_reset_token", {
       type: Sequelize.STRING,
       onUpdate: "CASCADE",
       onDelete: "SET NULL",
@@ -9,6 +9,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.removeColumn("users", "passwordResetToken");
+    return queryInterface.removeColumn("users", "password_reset_token");
   },
 };

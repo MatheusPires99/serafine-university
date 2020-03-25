@@ -26,8 +26,8 @@ class ForgotPasswordController {
     const date = new Date();
     date.setHours(date.getHours() + 2);
 
-    user.passwordResetToken = token;
-    user.passwordResetExpires = date;
+    user.password_reset_token = token;
+    user.password_reset_expires = date;
 
     await user.save();
 
