@@ -97,10 +97,6 @@ export const Content = styled.div`
         &:hover {
           background: ${darken(0.05, "#ffc72c")};
         }
-
-        svg {
-          margin-right: 5px;
-        }
       }
 
       a {

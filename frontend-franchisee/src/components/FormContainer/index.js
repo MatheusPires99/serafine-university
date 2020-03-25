@@ -35,6 +35,10 @@ export const FormContainer = styled(Form)`
       border-color: #ffc72c;
       box-shadow: 0 0 0 1px #ffc72c;
     }
+
+    &:focus ~ svg {
+      color: #ffc72c;
+    }
   }
 
   span {
