@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
+import ball from "~/assets/ball.png";
+
 export const Container = styled.div`
   background: #272727;
   border-bottom: 5px solid #ddd;
   margin-bottom: 30px;
+  background-image: url(${ball});
+  background-repeat: repeat;
 
   @media (max-width: 768px) {
     padding: 20px;
