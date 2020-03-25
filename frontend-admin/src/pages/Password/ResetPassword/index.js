@@ -26,15 +26,29 @@ export default function ResetPassword({ match }) {
   const loading = useSelector(state => state.user.loading);
 
   function handleSubmit({ token, password }) {
+    console.tron.log(token, password);
+
     dispatch(resetPasswordRequest(token, password));
   }
+
+  const initialData = {
+    token: resetToken,
+    password: ""
+  };
 
   return (
     <>
       <Content>
         <h1>Resetar senha</h1>
 
-        <FormContainer id="submit" schema={schema} onSubmit={handleSubmit}>
+        <FormContainer
+          initialData={initialData}
+          id="submit"
+          schema={schema}
+          onSubmit={handleSubmit}
+        >
+          <Input name="token" />
+
           <div>
             <Input
               name="password"
@@ -43,8 +57,6 @@ export default function ResetPassword({ match }) {
             />
             <FaLock size={14} />
           </div>
-
-          <Input name="token" value={resetToken} />
 
           <button type="submit">
             {loading ? <Spinner /> : "Alterar senha"}
