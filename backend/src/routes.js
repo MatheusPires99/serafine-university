@@ -10,6 +10,7 @@ import ResetPasswordController from "./app/controllers/auth/ResetPasswordControl
 import CategoryController from "./app/controllers/CategoryController";
 import DocumentController from "./app/controllers/DocumentController";
 import DocumentationController from "./app/controllers/DocumentationController";
+import LatestDocumentationController from "./app/controllers/LatestDocumentationController";
 import DisableDocumentController from "./app/controllers/DisableDocumentController";
 import DocumentsInCategoryController from "./app/controllers/DocumentsInCategoryController";
 
@@ -51,6 +52,8 @@ routes.delete("/category/:id", CategoryController.delete);
 routes.post("/document", DocumentController.store);
 routes.put("/document/:id", DocumentController.update);
 routes.delete("/document/:id", DocumentController.delete);
+
+routes.get("/latest_documantiation", LatestDocumentationController.index);
 
 routes.delete(
   "/category/:id/disable-document/:document_id",

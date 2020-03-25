@@ -12,10 +12,10 @@ class ResetPasswordController {
       return res.status(400).json({ error: "Field validation fails" });
     }
 
-    const { email, token, password } = req.body;
+    const { token, password } = req.body;
 
     const user = await User.findOne({
-      where: { email },
+      where: { password_reset_token: token },
     });
 
     if (!user) {
