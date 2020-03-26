@@ -12,13 +12,23 @@ class LatestDocumentationController {
     let lastCategory;
 
     await Promise.all(
-      (lastCategory = await connection.query("SELECT max(id) FROM categories", {
-        type: QueryTypes.SELECT,
-      }))
+      (lastCategory = await connection.query(
+        "SELECT max(id) FROM categories WHERE status = true",
+        {
+          type: QueryTypes.SELECT,
+          raw: true,
+        }
+      ))
     );
 
-    const category = await Category.findByPk(lastCategory, {
-      where: { status: true },
+    const lastCategoryId = [];
+
+    lastCategory.map(id => {
+      return lastCategoryId.push(id.max);
+    });
+
+    const category = await Category.findOne({
+      where: { id: lastCategoryId, status: true },
       attributes: ["id", "name", "description", "status"],
       include: [
         {
