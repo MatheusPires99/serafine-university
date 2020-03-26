@@ -26,29 +26,17 @@ export default function ResetPassword({ match }) {
   const loading = useSelector(state => state.user.loading);
 
   function handleSubmit({ token, password }) {
-    console.tron.log(token, password);
+    token = resetToken;
 
     dispatch(resetPasswordRequest(token, password));
   }
-
-  const initialData = {
-    token: resetToken,
-    password: ""
-  };
 
   return (
     <>
       <Content>
         <h1>Resetar senha</h1>
 
-        <FormContainer
-          initialData={initialData}
-          id="submit"
-          schema={schema}
-          onSubmit={handleSubmit}
-        >
-          <Input name="token" />
-
+        <FormContainer id="submit" schema={schema} onSubmit={handleSubmit}>
           <div>
             <Input
               name="password"

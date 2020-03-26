@@ -1,15 +1,15 @@
 import { takeLatest, put, call, all } from "redux-saga/effects";
 import { toast } from "react-toastify";
 
+import api from "~/services/api";
+import history from "~/services/history";
+
 import {
   forgotPasswordSuccess,
   forgotPasswordFailure,
   resetPasswordSuccess,
   resetPasswordFailure
 } from "./actions";
-
-import api from "~/services/api";
-import history from "~/services/history";
 
 export function* forgotPassword({ payload }) {
   try {

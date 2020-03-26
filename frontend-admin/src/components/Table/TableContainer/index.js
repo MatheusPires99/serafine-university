@@ -24,6 +24,14 @@ export const TableContainer = styled.table`
         display: flex;
         justify-content: flex-end;
       }
+
+      a {
+        color: #2684ff;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     .description-cell {
