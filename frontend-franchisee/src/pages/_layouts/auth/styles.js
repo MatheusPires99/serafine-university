@@ -80,6 +80,10 @@ export const Content = styled.div`
         }
       }
 
+      a {
+        font-size: 14px;
+      }
+
       button {
         background: #ffc72c;
         color: #fff;

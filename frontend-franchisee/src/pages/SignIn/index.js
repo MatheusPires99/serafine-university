@@ -46,7 +46,7 @@ export default function SignIn() {
             <FaLock size={14} />
           </div>
 
-          <Link to="/">Esqueci minha senha</Link>
+          <Link to="/forgot_password">Esqueci minha senha</Link>
 
           <button type="submit">{loading ? <Spinner /> : "Entrar"}</button>
         </FormContainer>

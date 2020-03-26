@@ -9,6 +9,7 @@ import api from "~/services/api";
 import University from "~/components/University";
 import Sidebar from "~/components/Sidebar";
 import { SkeletonMain } from "~/components/Skeleton";
+import Footer from "~/components/Footer";
 
 import {
   Content,
@@ -31,7 +32,15 @@ export default function Documentation({ match }) {
       try {
         setLoading(true);
 
-        const response = await api.get(`documentation/${id}`);
+        let response;
+
+        if (id) {
+          response = await api.get(`documentation/${id}`);
+        }
+
+        if (!id) {
+          response = await api.get("latest_documantiation");
+        }
 
         setCategory(response.data);
         setDocuments(response.data.documents);
@@ -98,6 +107,8 @@ export default function Documentation({ match }) {
           </Documentations>
         )}
       </Content>
+
+      <Footer />
     </>
   );
 }
