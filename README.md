@@ -55,7 +55,7 @@ Tudo isso é feito através de documentos que são cadastrados na área do admin
 
 ## :information_source: Como usar
 
-Para clonar e rodar essa aplicação, vocé precisará do [Git](https://git-scm.com), [Node.js v10.16][nodejs] ou posterior + [Yarn v1.13][yarn] ou posterior intalado no seu computador. Na linha de comando rode:
+Para clonar e rodar essa aplicação, vocé precisará do [Git](https://git-scm.com), [Node.js v10.16][https://nodejs.org/en/] ou posterior + [Yarn v1.13][https://classic.yarnpkg.com/en/docs/install#mac-stable] ou posterior intalado no seu computador. Na linha de comando rode:
 
 ```bash
 # Clone esse repositório:
@@ -67,8 +67,7 @@ $ cd serafine-university
 # Instale as dependências em cada pasta(backend, frontend-admin, frontend-franchisee)
 $ yarn
 
-# Para o backend criei dois containers no docker para PostgreSQL e Redis
-# Execute o comando:
+# Para o backend criei dois containers no docker para PostgreSQL e Redis e depois execute o comando:
 $ yarn dev
 
 # Para ambos os front-ends execute o comando:
