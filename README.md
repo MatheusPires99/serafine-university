@@ -74,3 +74,5 @@ $ yarn dev
 $ yarn start
 
 ```
+
+Feito com ♥ por Matheus Pires :wave: [Get in touch!](https://github.com/MatheusPires99)
