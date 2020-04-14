@@ -4,7 +4,40 @@
 </h1>
 
 ### ADMIN - Login
-![serafine](.github/admin.mov)
+![serafine](.github/admin-login.png)
+
+### ADMIN - Esqueci minha senha
+![serafine](.github/admin-forgot.png)
+
+### ADMIN - Categorias
+![serafine](.github/admin-category.png)
+
+### ADMIN - Form Categorias
+![serafine](.github/admin-category-form.png)
+
+### ADMIN - Documentos
+![serafine](.github/admin-document.png)
+
+### ADMIN - Form Documentos
+![serafine](.github/admin-document-form.png)
+
+### ADMIN - Usuários
+![serafine](.github/admin-user.png)
+
+### ADMIN - Form Usuários
+![serafine](.github/admin-user-form.png)
+
+### ADMIN - 404
+![serafine](.github/admin-404.png)
+
+### Franqueado - Login
+![serafine](.github/franchisee-login.png)
+
+### Franqueado - Documentações
+![serafine](.github/franchisee-doc.png)
+
+### Franqueado - Documentações2
+![serafine](.github/franchisee-doc2.png)
 
 ## :rocket: Universidade Serafine:
 
