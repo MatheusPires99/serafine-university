@@ -52,3 +52,26 @@ Tudo isso é feito através de documentos que são cadastrados na área do admin
 
 ### Franqueado - Documentações2
 ![serafine](.github/franchisee-doc2.png)
+
+## :information_source: Como usar
+
+Para clonar e rodar essa aplicação, vocé precisará do [Git](https://git-scm.com), [Node.js v10.16][nodejs] ou posterior + [Yarn v1.13][yarn] ou posterior intalado no seu computador. Na linha de comando rode:
+
+```bash
+# Clone esse repositório:
+$ git clone https://github.com/MatheusPires99/serafine-university
+
+# Entre no repositório
+$ cd serafine-university
+
+# Instale as dependências em cada pasta(backend, frontend-admin, frontend-franchisee)
+$ yarn
+
+# Para o backend criei dois containers no docker para PostgreSQL e Redis
+# Execute o comando:
+$ yarn dev
+
+# Para ambos os front-ends execute o comando:
+$ yarn start
+
+```
